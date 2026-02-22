@@ -7,11 +7,11 @@
       <div class="max-w-7xl mx-auto mt-3">
         <div class="flex justify-center sm:justify-end gap-2 mb-3">
           <button
-            :class="[
+            :class="[ 
               'px-4 py-2.5 rounded-lg font-bold text-sm border transition-all',
               lang === 'es'
-                ? 'bg-gradient-to-br from-teal-700 to-teal-800 border-teal-900 text-white shadow-md'
-                : 'bg-white border-teal-200 text-teal-900 hover:bg-teal-50',
+                ? 'bg-gradient-to-br from-slate-900 to-slate-800 border-slate-950 text-white shadow-md'
+                : 'bg-white border-stone-300 text-slate-800 hover:bg-stone-50',
             ]"
             @click="setLang('es')"
           >
@@ -25,11 +25,11 @@
             </span>
           </button>
           <button
-            :class="[
+            :class="[ 
               'px-4 py-2.5 rounded-lg font-bold text-sm border transition-all',
               lang === 'en'
-                ? 'bg-gradient-to-br from-teal-700 to-teal-800 border-teal-900 text-white shadow-md'
-                : 'bg-white border-teal-200 text-teal-900 hover:bg-teal-50',
+                ? 'bg-gradient-to-br from-slate-900 to-slate-800 border-slate-950 text-white shadow-md'
+                : 'bg-white border-stone-300 text-slate-800 hover:bg-stone-50',
             ]"
             @click="setLang('en')"
           >
@@ -56,9 +56,9 @@
             {{ copy.h2 }}
           </h2>
           <div class="mt-4 max-w-4xl flex items-center gap-3">
-            <div
-              class="flex-1 h-[2.5px] bg-gradient-to-r from-teal-800 to-transparent"
-            ></div>
+              <div
+                class="flex-1 h-[2.5px] bg-gradient-to-r from-slate-800 to-transparent"
+              ></div>
           </div>
         </header>
       </div>
@@ -135,20 +135,20 @@
             style="
               background: linear-gradient(
                 180deg,
-                rgba(25, 128, 140, 0.04),
+                rgba(45, 52, 70, 0.06),
                 transparent
               );
-              border-bottom: 1px solid rgba(25, 128, 140, 0.12);
+              border-bottom: 1px solid rgba(45, 52, 70, 0.16);
             "
           >
             <div>
-              <div class="font-extrabold text-lg font-playfair text-teal-900">
+              <div class="font-extrabold text-lg font-playfair text-slate-900">
                 {{ copy.docTitle }}
               </div>
-              <div class="text-sm text-teal-800 mt-1">{{ copy.docDesc }}</div>
+              <div class="text-sm text-slate-700 mt-1">{{ copy.docDesc }}</div>
             </div>
             <div
-              class="font-mono text-xs bg-white border border-teal-300 rounded-full px-4 py-1.5 text-teal-900 font-bold tracking-wider"
+              class="font-mono text-xs bg-white border border-stone-400 rounded-full px-4 py-1.5 text-slate-900 font-bold tracking-wider"
             >
               ID I-RC-2026
             </div>
@@ -157,45 +157,45 @@
           <div class="p-5">
             <!-- Couple -->
             <div
-              class="bg-white/60 rounded-2xl p-5 border border-teal-200 mb-5 shadow-sm"
+              class="bg-white/60 rounded-2xl p-5 border border-stone-300 mb-5 shadow-sm"
             >
               <h3
-                class="text-xs font-mono uppercase mb-3 text-teal-900 font-extrabold tracking-widest"
+                class="text-xs font-mono uppercase mb-3 text-slate-900 font-extrabold tracking-widest"
               >
                 {{ copy.coupleTitle }}
               </h3>
               <div class="flex gap-6 flex-wrap">
                 <div class="flex-1 min-w-[160px]">
                   <label
-                    class="text-xs text-teal-700 font-bold uppercase tracking-wide"
+                    class="text-xs text-slate-600 font-bold uppercase tracking-wide"
                     >{{ copy.brideLabel }}</label
                   >
                   <div
-                    class="font-bold text-teal-900 text-lg mt-2 font-playfair"
+                    class="font-bold text-slate-900 text-lg mt-2 font-playfair"
                   >
                     Paula Puentes
                   </div>
-                  <div class="text-xs text-teal-700 mt-1">
+                  <div class="text-xs text-slate-600 mt-1">
                     {{ copy.brideNat }}
                   </div>
                 </div>
                 <div class="flex-1 min-w-[160px]">
                   <label
-                    class="text-xs text-teal-700 font-bold uppercase tracking-wide"
+                    class="text-xs text-slate-600 font-bold uppercase tracking-wide"
                     >{{ copy.groomLabel }}</label
                   >
                   <div
-                    class="font-bold text-teal-900 text-lg mt-2 font-playfair"
+                    class="font-bold text-slate-900 text-lg mt-2 font-playfair"
                   >
                     Dakota Wendel
                   </div>
-                  <div class="text-xs text-teal-700 mt-1">
+                  <div class="text-xs text-slate-600 mt-1">
                     {{ copy.groomNat }}
                   </div>
                 </div>
               </div>
               <div
-                class="text-xs text-teal-600 mt-4 italic border-t border-teal-100 pt-3"
+                class="text-xs text-slate-500 mt-4 italic border-t border-stone-200 pt-3"
               >
                 {{ copy.coupleHint }}
               </div>
@@ -203,70 +203,70 @@
 
             <!-- Itinerary -->
             <div
-              class="bg-white/60 rounded-2xl p-5 border border-teal-200 mb-5 shadow-sm"
+              class="bg-white/60 rounded-2xl p-5 border border-stone-300 mb-5 shadow-sm"
             >
               <h3
-                class="text-xs font-mono uppercase text-teal-900 font-extrabold tracking-widest"
+                class="text-xs font-mono uppercase text-slate-900 font-extrabold tracking-widest"
               >
                 {{ copy.itTitle }}
               </h3>
               <div class="mt-4 grid gap-3">
                 <div
-                  class="p-4 rounded-lg bg-gradient-to-br from-teal-50 to-cyan-50 border border-teal-300/60"
+                  class="p-4 rounded-lg bg-gradient-to-br from-stone-50 to-amber-50 border border-stone-400/60"
                 >
                   <div
                     class="inline-flex items-center gap-2 text-xs font-mono mb-3"
                   >
                     <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                    <span class="text-teal-900 font-extrabold uppercase">{{
+                    <span class="text-slate-900 font-extrabold uppercase">{{
                       copy.stop1Badge
                     }}</span>
                   </div>
-                  <div class="font-bold text-teal-900 text-base">
+                  <div class="font-bold text-slate-900 text-base">
                     {{ config.civil_place }}
                   </div>
-                  <div class="text-sm text-teal-700 mt-2">
+                  <div class="text-sm text-slate-600 mt-2">
                     📅 {{ config.civil_date }} · 🕐 {{ config.civil_time }}
                   </div>
                   <div class="mt-3">
                     <a
                       :href="config.civil_maps"
                       target="_blank"
-                      class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-teal-300 text-sm text-teal-900 font-bold hover:shadow-md transition"
+                      class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-stone-400 text-sm text-slate-900 font-bold hover:shadow-md transition"
                       >🗺️ Maps</a
                     >
                   </div>
                 </div>
 
                 <div
-                  class="p-4 rounded-lg bg-gradient-to-br from-teal-50 to-cyan-50 border border-teal-300/60"
+                  class="p-4 rounded-lg bg-gradient-to-br from-stone-50 to-amber-50 border border-stone-400/60"
                 >
                   <div
                     class="inline-flex items-center gap-2 text-xs font-mono mb-3"
                   >
                     <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                    <span class="text-teal-900 font-extrabold uppercase">{{
+                    <span class="text-slate-900 font-extrabold uppercase">{{
                       copy.stop2Badge
                     }}</span>
                   </div>
-                  <div class="font-bold text-teal-900 text-base">
+                  <div class="font-bold text-slate-900 text-base">
                     {{ config.post_place }}
                   </div>
-                  <div class="text-sm text-teal-700 mt-2">
+                  <div class="text-sm text-slate-600 mt-2">
                     📅 {{ config.post_date }} · 🕐 {{ config.post_time }}
                   </div>
                   <div class="mt-3">
                     <a
                       :href="config.post_maps"
                       target="_blank"
-                      class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-teal-300 text-sm text-teal-900 font-bold hover:shadow-md transition"
+                      class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-stone-400 text-sm text-slate-900 font-bold hover:shadow-md transition"
                       >🗺️ Maps</a
                     >
                   </div>
                 </div>
               </div>
               <div
-                class="text-xs text-teal-600 mt-4 italic border-t border-teal-100 pt-3"
+                class="text-xs text-slate-500 mt-4 italic border-t border-stone-200 pt-3"
               >
                 {{ copy.itHint }}
               </div>
@@ -274,10 +274,10 @@
 
             <!-- Form -->
             <div
-              class="bg-white/60 rounded-2xl p-5 border border-teal-200 shadow-sm"
+              class="bg-white/60 rounded-2xl p-5 border border-stone-300 shadow-sm"
             >
               <h3
-                class="text-xs font-mono uppercase mb-4 text-teal-900 font-extrabold tracking-widest"
+                class="text-xs font-mono uppercase mb-4 text-slate-900 font-extrabold tracking-widest"
               >
                 {{ copy.formTitle }}
               </h3>
@@ -285,7 +285,7 @@
               <div class="grid md:grid-cols-2 gap-4">
                 <div>
                   <label
-                    class="text-xs text-teal-700 font-bold uppercase tracking-wide"
+                    class="text-xs text-slate-600 font-bold uppercase tracking-wide"
                     >{{ copy.nameLabel }}</label
                   >
                   <input
@@ -296,7 +296,7 @@
                 </div>
                 <div>
                   <label
-                    class="text-xs text-teal-700 font-bold uppercase tracking-wide"
+                    class="text-xs text-slate-600 font-bold uppercase tracking-wide"
                     >{{ copy.lastLabel }}</label
                   >
                   <input
@@ -309,7 +309,7 @@
 
               <div class="mt-4">
                 <label
-                  class="text-xs text-teal-700 font-bold uppercase tracking-wide"
+                  class="text-xs text-slate-600 font-bold uppercase tracking-wide"
                   >Email</label
                 >
                 <input
@@ -324,7 +324,7 @@
 
               <div class="mt-4">
                 <label
-                  class="text-xs text-teal-700 font-bold uppercase tracking-wide"
+                  class="text-xs text-slate-600 font-bold uppercase tracking-wide"
                   >{{ copy.attLabel }}</label
                 >
                 <select v-model="attendance" class="mt-2 w-full input-elem">
@@ -338,7 +338,7 @@
                     ❌ No puedo asistir (apoyo moral a distancia)
                   </option>
                 </select>
-                <div class="text-xs text-teal-600 mt-2 italic">
+                <div class="text-xs text-slate-500 mt-2 italic">
                   {{ copy.attHint }}
                 </div>
                 <div v-if="err" class="text-sm text-rose-600 mt-2 font-bold">
@@ -356,18 +356,18 @@
               </div>
 
               <div
-                class="mt-5 bg-gradient-to-br from-teal-50 to-cyan-50 border border-dashed border-teal-300 rounded-2xl p-5 relative"
+                class="mt-5 bg-gradient-to-br from-stone-50 to-amber-50 border border-dashed border-stone-400 rounded-2xl p-5 relative"
               >
                 <div class="flex items-center justify-between mb-3">
-                  <b class="font-mono text-teal-900 text-sm font-extrabold">{{
+                  <b class="font-mono text-slate-900 text-sm font-extrabold">{{
                     copy.permitTitle
                   }}</b>
-                  <span class="text-xs text-teal-700 font-mono"
+                  <span class="text-xs text-slate-600 font-mono"
                     >CODE: ENTRY-RC-PAU-DAK</span
                   >
                 </div>
                 <pre
-                  class="font-mono text-sm text-teal-800 whitespace-pre-wrap"
+                  class="font-mono text-sm text-slate-700 whitespace-pre-wrap"
                   >{{ mrz }}</pre
                 >
                 <div
@@ -386,21 +386,21 @@
         </section>
 
         <div
-          class="bg-white/60 border border-teal-200 rounded-2xl p-5 shadow-sm"
+          class="bg-white/60 border border-stone-300 rounded-2xl p-5 shadow-sm"
         >
           <h3
-            class="text-xs font-mono uppercase text-teal-900 font-extrabold tracking-widest"
+            class="text-xs font-mono uppercase text-slate-900 font-extrabold tracking-widest"
           >
             {{ copy.faqTitle }}
           </h3>
-          <ul class="mt-4 space-y-3 text-sm text-teal-800">
+          <ul class="mt-4 space-y-3 text-sm text-slate-700">
             <li v-html="copy.f1"></li>
             <li v-html="copy.f2"></li>
             <li v-html="copy.f3"></li>
           </ul>
         </div>
       </div>
-      <footer class="mt-8 text-center text-sm text-teal-700 font-medium">
+      <footer class="mt-8 text-center text-sm text-slate-600 font-medium">
         {{ copy.foot }}
       </footer>
     </div>
@@ -742,7 +742,7 @@ watch([firstName, lastName, attendance, lang], () => {});
   object-fit: cover;
   border-radius: 0.5rem;
   border: 6px solid #f7ead6;
-  box-shadow: 0 6px 18px rgba(25, 128, 140, 0.08);
+  box-shadow: 0 6px 18px rgba(45, 52, 70, 0.08);
   background: #fff;
 }
 
