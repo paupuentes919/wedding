@@ -1,374 +1,404 @@
 <template>
-  <div class="min-h-screen hpad-20">
-    <div class="max-w-7xl mx-auto">
-      <TopBar :copy="copy" :statusPill="statusPill" />
+  <div class="min-h-screen">
+    <section class="hero-tramite hpad-20">
+      <div class="max-w-7xl mx-auto">
+        <TopBar :copy="copy" :statusPill="statusPill" />
 
-      <header class="mb-8">
-        <h1 class="heading-large font-playfair flex justify-center mb-3 mt-6">
-          {{ copy.h1 }}
-        </h1>
-        <h2 class="heading-large-lower font-playfair flex justify-center">
-          {{ copy.h2 }}
-        </h2>
-        <div class="mt-4 max-w-4xl flex items-center gap-3">
-          <div
-            class="flex-1 h-px bg-gradient-to-r from-teal-800 to-transparent"
-          ></div>
-        </div>
-      </header>
-
-      <div class="flex justify-center mb-6">
-        <div class="photo-wrapper relative">
-          <!-- Paperclip SVG -->
-          <svg
-            class="paperclip-svg"
-            viewBox="0 0 80 100"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
+        <div class="flex justify-center sm:justify-end gap-2 mb-3">
+          <button
+            :class="[
+              'px-4 py-2.5 rounded-lg font-bold text-sm border transition-all',
+              lang === 'es'
+                ? 'bg-gradient-to-br from-teal-700 to-teal-800 border-teal-900 text-white shadow-md'
+                : 'bg-white border-teal-200 text-teal-900 hover:bg-teal-50',
+            ]"
+            @click="setLang('es')"
           >
-            <defs>
-              <linearGradient
-                id="clip-gradient"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop
-                  offset="0%"
-                  style="stop-color: #c0cace; stop-opacity: 1"
-                />
-                <stop
-                  offset="100%"
-                  style="stop-color: #8a9299; stop-opacity: 1"
-                />
-              </linearGradient>
-            </defs>
-            <!-- Main paperclip body -->
-            <path
-              d="M 25 15 Q 15 15 15 30 L 15 65 Q 15 75 25 75 Q 35 75 35 65 L 35 35 Q 35 28 42 28 Q 49 28 49 35 L 49 65 Q 49 80 37 80 Q 22 80 22 65"
-              fill="none"
-              stroke="url(#clip-gradient)"
-              stroke-width="5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <!-- Inner shadow/depth -->
-            <path
-              d="M 27 17 Q 18 17 18 30 L 18 63 Q 18 72 26 72 Q 33 72 33 63 L 33 35 Q 33 30 40 30 Q 46 30 46 35 L 46 63 Q 46 77 36 77 Q 24 77 24 65"
-              fill="none"
-              stroke="rgba(255,255,255,0.4)"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              opacity="0.6"
-            />
-          </svg>
-
-          <!-- Photo Box -->
-          <div class="photo-box">
-            <img :src="coupleImg" alt="Couple illustration" class="photo-img" />
-          </div>
-
-          <!-- Stamp Image -->
-          <img :src="stampImg" alt="Stamp" class="stamp-image" />
+            <span class="inline-flex items-center gap-2">
+              <img
+                src="/src/assets/arg.png"
+                alt="Argentina"
+                class="w-5 h-5 rounded-sm"
+              />
+              <span>Español</span>
+            </span>
+          </button>
+          <button
+            :class="[
+              'px-4 py-2.5 rounded-lg font-bold text-sm border transition-all',
+              lang === 'en'
+                ? 'bg-gradient-to-br from-teal-700 to-teal-800 border-teal-900 text-white shadow-md'
+                : 'bg-white border-teal-200 text-teal-900 hover:bg-teal-50',
+            ]"
+            @click="setLang('en')"
+          >
+            <span class="inline-flex items-center gap-2">
+              <img
+                src="/src/assets/usa.png"
+                alt="United States"
+                class="w-5 h-5 rounded-sm"
+              />
+              <span>English</span>
+            </span>
+          </button>
         </div>
+
+        <header class="mb-8">
+          <h1 class="heading-large font-tramite flex justify-center mb-3 mt-6">
+            {{ copy.h1 }}
+          </h1>
+          <h2 class="heading-large-lower font-tramite flex justify-center">
+            {{ copy.h2 }}
+          </h2>
+          <div class="mt-4 max-w-4xl flex items-center gap-3">
+            <div
+              class="flex-1 h-px bg-gradient-to-r from-teal-800 to-transparent"
+            ></div>
+          </div>
+        </header>
       </div>
+    </section>
 
-      <!-- MAIN -->
-      <section class="invitation-card shadow-xl overflow-hidden">
-        <div
-          class="flex items-start justify-between px-7 py-6"
-          style="
-            background: linear-gradient(
-              180deg,
-              rgba(25, 128, 140, 0.04),
-              transparent
-            );
-            border-bottom: 1px solid rgba(25, 128, 140, 0.12);
-          "
-        >
-          <div>
-            <div class="font-extrabold text-lg font-playfair text-teal-900">
-              {{ copy.docTitle }}
-            </div>
-            <div class="text-sm text-teal-800 mt-1">{{ copy.docDesc }}</div>
-          </div>
-          <div
-            class="font-mono text-xs bg-white border border-teal-300 rounded-full px-4 py-1.5 text-teal-900 font-bold tracking-wider"
-          >
-            ID I-RC-2026
-          </div>
-        </div>
-
-        <div class="p-5">
-          <div class="flex gap-2 mb-4">
-            <button
-              :class="[
-                'px-4 py-2.5 rounded-lg font-bold text-sm border transition-all',
-                lang === 'es'
-                  ? 'bg-gradient-to-br from-teal-700 to-teal-800 border-teal-900 text-white shadow-md'
-                  : 'bg-white border-teal-200 text-teal-900 hover:bg-teal-50',
-              ]"
-              @click="setLang('es')"
+    <div class="hpad-20">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex justify-center mb-6">
+          <div class="photo-wrapper relative">
+            <!-- Paperclip SVG -->
+            <svg
+              class="paperclip-svg"
+              viewBox="0 0 80 100"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
-              Español
-            </button>
-            <button
-              :class="[
-                'px-4 py-2.5 rounded-lg font-bold text-sm border transition-all',
-                lang === 'en'
-                  ? 'bg-gradient-to-br from-teal-700 to-teal-800 border-teal-900 text-white shadow-md'
-                  : 'bg-white border-teal-200 text-teal-900 hover:bg-teal-50',
-              ]"
-              @click="setLang('en')"
-            >
-              English
-            </button>
-          </div>
-
-          <!-- Couple -->
-          <div
-            class="bg-white/60 rounded-2xl p-5 border border-teal-200 mb-5 shadow-sm"
-          >
-            <h3
-              class="text-xs font-mono uppercase mb-3 text-teal-900 font-extrabold tracking-widest"
-            >
-              {{ copy.coupleTitle }}
-            </h3>
-            <div class="flex gap-6 flex-wrap">
-              <div class="flex-1 min-w-[160px]">
-                <label
-                  class="text-xs text-teal-700 font-bold uppercase tracking-wide"
-                  >{{ copy.brideLabel }}</label
+              <defs>
+                <linearGradient
+                  id="clip-gradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
                 >
-                <div class="font-bold text-teal-900 text-lg mt-2 font-playfair">
-                  Paula Puentes
-                </div>
-                <div class="text-xs text-teal-700 mt-1">
-                  {{ copy.brideNat }}
-                </div>
-              </div>
-              <div class="flex-1 min-w-[160px]">
-                <label
-                  class="text-xs text-teal-700 font-bold uppercase tracking-wide"
-                  >{{ copy.groomLabel }}</label
-                >
-                <div class="font-bold text-teal-900 text-lg mt-2 font-playfair">
-                  Dakota Wendel
-                </div>
-                <div class="text-xs text-teal-700 mt-1">
-                  {{ copy.groomNat }}
-                </div>
-              </div>
-            </div>
-            <div
-              class="text-xs text-teal-600 mt-4 italic border-t border-teal-100 pt-3"
-            >
-              {{ copy.coupleHint }}
-            </div>
-          </div>
+                  <stop
+                    offset="0%"
+                    style="stop-color: #c0cace; stop-opacity: 1"
+                  />
+                  <stop
+                    offset="100%"
+                    style="stop-color: #8a9299; stop-opacity: 1"
+                  />
+                </linearGradient>
+              </defs>
+              <!-- Main paperclip body -->
+              <path
+                d="M 25 15 Q 15 15 15 30 L 15 65 Q 15 75 25 75 Q 35 75 35 65 L 35 35 Q 35 28 42 28 Q 49 28 49 35 L 49 65 Q 49 80 37 80 Q 22 80 22 65"
+                fill="none"
+                stroke="url(#clip-gradient)"
+                stroke-width="5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <!-- Inner shadow/depth -->
+              <path
+                d="M 27 17 Q 18 17 18 30 L 18 63 Q 18 72 26 72 Q 33 72 33 63 L 33 35 Q 33 30 40 30 Q 46 30 46 35 L 46 63 Q 46 77 36 77 Q 24 77 24 65"
+                fill="none"
+                stroke="rgba(255,255,255,0.4)"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                opacity="0.6"
+              />
+            </svg>
 
-          <!-- Itinerary -->
-          <div
-            class="bg-white/60 rounded-2xl p-5 border border-teal-200 mb-5 shadow-sm"
-          >
-            <h3
-              class="text-xs font-mono uppercase text-teal-900 font-extrabold tracking-widest"
-            >
-              {{ copy.itTitle }}
-            </h3>
-            <div class="mt-4 grid gap-3">
-              <div
-                class="p-4 rounded-lg bg-gradient-to-br from-teal-50 to-cyan-50 border border-teal-300/60"
-              >
-                <div
-                  class="inline-flex items-center gap-2 text-xs font-mono mb-3"
-                >
-                  <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                  <span class="text-teal-900 font-extrabold uppercase">{{
-                    copy.stop1Badge
-                  }}</span>
-                </div>
-                <div class="font-bold text-teal-900 text-base">
-                  {{ config.civil_place }}
-                </div>
-                <div class="text-sm text-teal-700 mt-2">
-                  📅 {{ config.civil_date }} · 🕐 {{ config.civil_time }}
-                </div>
-                <div class="mt-3">
-                  <a
-                    :href="config.civil_maps"
-                    target="_blank"
-                    class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-teal-300 text-sm text-teal-900 font-bold hover:shadow-md transition"
-                    >🗺️ Maps</a
-                  >
-                </div>
-              </div>
-
-              <div
-                class="p-4 rounded-lg bg-gradient-to-br from-teal-50 to-cyan-50 border border-teal-300/60"
-              >
-                <div
-                  class="inline-flex items-center gap-2 text-xs font-mono mb-3"
-                >
-                  <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                  <span class="text-teal-900 font-extrabold uppercase">{{
-                    copy.stop2Badge
-                  }}</span>
-                </div>
-                <div class="font-bold text-teal-900 text-base">
-                  {{ config.post_place }}
-                </div>
-                <div class="text-sm text-teal-700 mt-2">
-                  📅 {{ config.post_date }} · 🕐 {{ config.post_time }}
-                </div>
-                <div class="mt-3">
-                  <a
-                    :href="config.post_maps"
-                    target="_blank"
-                    class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-teal-300 text-sm text-teal-900 font-bold hover:shadow-md transition"
-                    >🗺️ Maps</a
-                  >
-                </div>
-              </div>
-            </div>
-            <div
-              class="text-xs text-teal-600 mt-4 italic border-t border-teal-100 pt-3"
-            >
-              {{ copy.itHint }}
-            </div>
-          </div>
-
-          <!-- Form -->
-          <div
-            class="bg-white/60 rounded-2xl p-5 border border-teal-200 shadow-sm"
-          >
-            <h3
-              class="text-xs font-mono uppercase mb-4 text-teal-900 font-extrabold tracking-widest"
-            >
-              {{ copy.formTitle }}
-            </h3>
-
-            <div class="grid md:grid-cols-2 gap-4">
-              <div>
-                <label
-                  class="text-xs text-teal-700 font-bold uppercase tracking-wide"
-                  >{{ copy.nameLabel }}</label
-                >
-                <input
-                  v-model="firstName"
-                  class="mt-2 w-full input-elem outline-none"
-                  placeholder="Ej: Juan / John"
-                />
-              </div>
-              <div>
-                <label
-                  class="text-xs text-teal-700 font-bold uppercase tracking-wide"
-                  >{{ copy.lastLabel }}</label
-                >
-                <input
-                  v-model="lastName"
-                  class="mt-2 w-full input-elem outline-none"
-                  placeholder="Ej: Pérez / Smith"
-                />
-              </div>
-            </div>
-
-            <div class="mt-4">
-              <label
-                class="text-xs text-teal-700 font-bold uppercase tracking-wide"
-                >Email</label
-              >
-              <input
-                v-model="email"
-                type="email"
-                class="mt-2 w-full input-elem outline-none"
-                placeholder="tu@email.com"
+            <!-- Photo Box -->
+            <div class="photo-box">
+              <img
+                :src="coupleImg"
+                alt="Couple illustration"
+                class="photo-img"
               />
             </div>
 
-            <!-- Phone fields removed; Email remains optional -->
+            <!-- Stamp Image -->
+            <img :src="stampImg" alt="Stamp" class="stamp-image" />
+          </div>
+        </div>
 
-            <div class="mt-4">
-              <label
-                class="text-xs text-teal-700 font-bold uppercase tracking-wide"
-                >{{ copy.attLabel }}</label
-              >
-              <select v-model="attendance" class="mt-2 w-full input-elem">
-                <option value="" disabled>Selecciona una opción...</option>
-                <option value="both">
-                  ✅ Asisto a ambos tramos (civil + post)
-                </option>
-                <option value="civil">✅ Solo Registro Civil</option>
-                <option value="post">✅ Solo Post Registro Civil</option>
-                <option value="no">
-                  ❌ No puedo asistir (apoyo moral a distancia)
-                </option>
-              </select>
-              <div class="text-xs text-teal-600 mt-2 italic">
-                {{ copy.attHint }}
+        <!-- MAIN -->
+        <section class="invitation-card shadow-xl overflow-hidden">
+          <div
+            class="flex items-start justify-between px-7 py-6"
+            style="
+              background: linear-gradient(
+                180deg,
+                rgba(25, 128, 140, 0.04),
+                transparent
+              );
+              border-bottom: 1px solid rgba(25, 128, 140, 0.12);
+            "
+          >
+            <div>
+              <div class="font-extrabold text-lg font-playfair text-teal-900">
+                {{ copy.docTitle }}
               </div>
-              <div v-if="err" class="text-sm text-rose-600 mt-2 font-bold">
-                {{ copy.err }}
-              </div>
+              <div class="text-sm text-teal-800 mt-1">{{ copy.docDesc }}</div>
             </div>
-
-            <div class="mt-5 flex flex-wrap gap-3">
-              <button @click="issue" class="btn-primary">
-                🛂 {{ copy.issueBtn }}
-              </button>
-              <button @click="deny" class="btn-ghost">
-                🚫 {{ copy.denyBtn }}
-              </button>
-            </div>
-
             <div
-              class="mt-5 bg-gradient-to-br from-teal-50 to-cyan-50 border border-dashed border-teal-300 rounded-2xl p-5 relative"
+              class="font-mono text-xs bg-white border border-teal-300 rounded-full px-4 py-1.5 text-teal-900 font-bold tracking-wider"
             >
-              <div class="flex items-center justify-between mb-3">
-                <b class="font-mono text-teal-900 text-sm font-extrabold">{{
-                  copy.permitTitle
-                }}</b>
-                <span class="text-xs text-teal-700 font-mono"
-                  >CODE: ENTRY-RC-PAU-DAK</span
-                >
+              ID I-RC-2026
+            </div>
+          </div>
+
+          <div class="p-5">
+            <!-- Couple -->
+            <div
+              class="bg-white/60 rounded-2xl p-5 border border-teal-200 mb-5 shadow-sm"
+            >
+              <h3
+                class="text-xs font-mono uppercase mb-3 text-teal-900 font-extrabold tracking-widest"
+              >
+                {{ copy.coupleTitle }}
+              </h3>
+              <div class="flex gap-6 flex-wrap">
+                <div class="flex-1 min-w-[160px]">
+                  <label
+                    class="text-xs text-teal-700 font-bold uppercase tracking-wide"
+                    >{{ copy.brideLabel }}</label
+                  >
+                  <div
+                    class="font-bold text-teal-900 text-lg mt-2 font-playfair"
+                  >
+                    Paula Puentes
+                  </div>
+                  <div class="text-xs text-teal-700 mt-1">
+                    {{ copy.brideNat }}
+                  </div>
+                </div>
+                <div class="flex-1 min-w-[160px]">
+                  <label
+                    class="text-xs text-teal-700 font-bold uppercase tracking-wide"
+                    >{{ copy.groomLabel }}</label
+                  >
+                  <div
+                    class="font-bold text-teal-900 text-lg mt-2 font-playfair"
+                  >
+                    Dakota Wendel
+                  </div>
+                  <div class="text-xs text-teal-700 mt-1">
+                    {{ copy.groomNat }}
+                  </div>
+                </div>
               </div>
-              <pre
-                class="font-mono text-sm text-teal-800 whitespace-pre-wrap"
-                >{{ mrz }}</pre
-              >
               <div
-                :class="[
-                  'absolute right-4 top-14 px-3 py-2 rounded-xl font-mono text-xs border',
-                  stampShown
-                    ? 'stamp-mark show stamp-large border-emerald-300 text-emerald-300 bg-black/40'
-                    : 'stamp-mark stamp-large border-emerald-300 text-emerald-300 bg-black/20',
-                ]"
+                class="text-xs text-teal-600 mt-4 italic border-t border-teal-100 pt-3"
               >
-                {{ copy.stamp }}
+                {{ copy.coupleHint }}
+              </div>
+            </div>
+
+            <!-- Itinerary -->
+            <div
+              class="bg-white/60 rounded-2xl p-5 border border-teal-200 mb-5 shadow-sm"
+            >
+              <h3
+                class="text-xs font-mono uppercase text-teal-900 font-extrabold tracking-widest"
+              >
+                {{ copy.itTitle }}
+              </h3>
+              <div class="mt-4 grid gap-3">
+                <div
+                  class="p-4 rounded-lg bg-gradient-to-br from-teal-50 to-cyan-50 border border-teal-300/60"
+                >
+                  <div
+                    class="inline-flex items-center gap-2 text-xs font-mono mb-3"
+                  >
+                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                    <span class="text-teal-900 font-extrabold uppercase">{{
+                      copy.stop1Badge
+                    }}</span>
+                  </div>
+                  <div class="font-bold text-teal-900 text-base">
+                    {{ config.civil_place }}
+                  </div>
+                  <div class="text-sm text-teal-700 mt-2">
+                    📅 {{ config.civil_date }} · 🕐 {{ config.civil_time }}
+                  </div>
+                  <div class="mt-3">
+                    <a
+                      :href="config.civil_maps"
+                      target="_blank"
+                      class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-teal-300 text-sm text-teal-900 font-bold hover:shadow-md transition"
+                      >🗺️ Maps</a
+                    >
+                  </div>
+                </div>
+
+                <div
+                  class="p-4 rounded-lg bg-gradient-to-br from-teal-50 to-cyan-50 border border-teal-300/60"
+                >
+                  <div
+                    class="inline-flex items-center gap-2 text-xs font-mono mb-3"
+                  >
+                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                    <span class="text-teal-900 font-extrabold uppercase">{{
+                      copy.stop2Badge
+                    }}</span>
+                  </div>
+                  <div class="font-bold text-teal-900 text-base">
+                    {{ config.post_place }}
+                  </div>
+                  <div class="text-sm text-teal-700 mt-2">
+                    📅 {{ config.post_date }} · 🕐 {{ config.post_time }}
+                  </div>
+                  <div class="mt-3">
+                    <a
+                      :href="config.post_maps"
+                      target="_blank"
+                      class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-teal-300 text-sm text-teal-900 font-bold hover:shadow-md transition"
+                      >🗺️ Maps</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                class="text-xs text-teal-600 mt-4 italic border-t border-teal-100 pt-3"
+              >
+                {{ copy.itHint }}
+              </div>
+            </div>
+
+            <!-- Form -->
+            <div
+              class="bg-white/60 rounded-2xl p-5 border border-teal-200 shadow-sm"
+            >
+              <h3
+                class="text-xs font-mono uppercase mb-4 text-teal-900 font-extrabold tracking-widest"
+              >
+                {{ copy.formTitle }}
+              </h3>
+
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    class="text-xs text-teal-700 font-bold uppercase tracking-wide"
+                    >{{ copy.nameLabel }}</label
+                  >
+                  <input
+                    v-model="firstName"
+                    class="mt-2 w-full input-elem outline-none"
+                    placeholder="Ej: Juan / John"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="text-xs text-teal-700 font-bold uppercase tracking-wide"
+                    >{{ copy.lastLabel }}</label
+                  >
+                  <input
+                    v-model="lastName"
+                    class="mt-2 w-full input-elem outline-none"
+                    placeholder="Ej: Pérez / Smith"
+                  />
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <label
+                  class="text-xs text-teal-700 font-bold uppercase tracking-wide"
+                  >Email</label
+                >
+                <input
+                  v-model="email"
+                  type="email"
+                  class="mt-2 w-full input-elem outline-none"
+                  placeholder="tu@email.com"
+                />
+              </div>
+
+              <!-- Phone fields removed; Email remains optional -->
+
+              <div class="mt-4">
+                <label
+                  class="text-xs text-teal-700 font-bold uppercase tracking-wide"
+                  >{{ copy.attLabel }}</label
+                >
+                <select v-model="attendance" class="mt-2 w-full input-elem">
+                  <option value="" disabled>Selecciona una opción...</option>
+                  <option value="both">
+                    ✅ Asisto a ambos tramos (civil + post)
+                  </option>
+                  <option value="civil">✅ Solo Registro Civil</option>
+                  <option value="post">✅ Solo Post Registro Civil</option>
+                  <option value="no">
+                    ❌ No puedo asistir (apoyo moral a distancia)
+                  </option>
+                </select>
+                <div class="text-xs text-teal-600 mt-2 italic">
+                  {{ copy.attHint }}
+                </div>
+                <div v-if="err" class="text-sm text-rose-600 mt-2 font-bold">
+                  {{ copy.err }}
+                </div>
+              </div>
+
+              <div class="mt-5 flex flex-wrap gap-3">
+                <button @click="issue" class="btn-primary">
+                  🛂 {{ copy.issueBtn }}
+                </button>
+                <button @click="deny" class="btn-ghost">
+                  🚫 {{ copy.denyBtn }}
+                </button>
+              </div>
+
+              <div
+                class="mt-5 bg-gradient-to-br from-teal-50 to-cyan-50 border border-dashed border-teal-300 rounded-2xl p-5 relative"
+              >
+                <div class="flex items-center justify-between mb-3">
+                  <b class="font-mono text-teal-900 text-sm font-extrabold">{{
+                    copy.permitTitle
+                  }}</b>
+                  <span class="text-xs text-teal-700 font-mono"
+                    >CODE: ENTRY-RC-PAU-DAK</span
+                  >
+                </div>
+                <pre
+                  class="font-mono text-sm text-teal-800 whitespace-pre-wrap"
+                  >{{ mrz }}</pre
+                >
+                <div
+                  :class="[
+                    'absolute right-4 top-14 px-3 py-2 rounded-xl font-mono text-xs border',
+                    stampShown
+                      ? 'stamp-mark show stamp-large border-emerald-300 text-emerald-300 bg-black/40'
+                      : 'stamp-mark stamp-large border-emerald-300 text-emerald-300 bg-black/20',
+                  ]"
+                >
+                  {{ copy.stamp }}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <div class="bg-white/60 border border-teal-200 rounded-2xl p-5 shadow-sm">
-        <h3
-          class="text-xs font-mono uppercase text-teal-900 font-extrabold tracking-widest"
+        <div
+          class="bg-white/60 border border-teal-200 rounded-2xl p-5 shadow-sm"
         >
-          {{ copy.faqTitle }}
-        </h3>
-        <ul class="mt-4 space-y-3 text-sm text-teal-800">
-          <li v-html="copy.f1"></li>
-          <li v-html="copy.f2"></li>
-          <li v-html="copy.f3"></li>
-        </ul>
+          <h3
+            class="text-xs font-mono uppercase text-teal-900 font-extrabold tracking-widest"
+          >
+            {{ copy.faqTitle }}
+          </h3>
+          <ul class="mt-4 space-y-3 text-sm text-teal-800">
+            <li v-html="copy.f1"></li>
+            <li v-html="copy.f2"></li>
+            <li v-html="copy.f3"></li>
+          </ul>
+        </div>
       </div>
+      <footer class="mt-8 text-center text-sm text-teal-700 font-medium">
+        {{ copy.foot }}
+      </footer>
     </div>
-    <footer class="mt-8 text-center text-sm text-teal-700 font-medium">
-      {{ copy.foot }}
-    </footer>
 
     <div v-if="toastMsg" class="toast-fixed text-sm">{{ toastMsg }}</div>
   </div>

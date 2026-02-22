@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;600;700&display=swap");
 
 :root{
 	--bg: #F0FAFB;
@@ -41,6 +42,7 @@ body{
 
 /* Typography helpers */
 .font-playfair{ font-family: 'Playfair Display', serif; }
+.font-tramite{ font-family: 'IBM Plex Serif', 'Times New Roman', serif !important; letter-spacing: -0.01em; }
 
 /* Invitation card + glass */
 .invitation-card{
@@ -114,4 +116,19 @@ body{
 .hpad-20{ padding-left:15%; padding-right:15%; }
 @media (max-width:900px){
 	.hpad-20{ padding-left:1rem; padding-right:1rem }
+}
+
+/* Hero block with subtle immigration pattern */
+.hero-tramite{
+	position: relative;
+	padding-top: 10px;
+	padding-bottom: 28px;
+	border-bottom: 1px solid rgba(25,128,140,0.22);
+	box-shadow: 0 16px 32px rgba(25,128,140,0.06);
+	background-image:
+		linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(240,250,251,0.95) 60%, rgba(230,244,248,0.97) 100%),
+		url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'><g fill='none' stroke='%230F3D43' stroke-opacity='0.08' stroke-width='2'><circle cx='70' cy='70' r='38'/><circle cx='150' cy='150' r='38'/><path d='M120 30l40 20-40 20-40-20z'/><path d='M30 120c25-20 55-20 80 0'/><path d='M140 100c20 15 35 35 40 60'/></g></svg>");
+	background-size: 100% 100%, 220px 220px;
+	background-repeat: no-repeat, repeat;
+	background-position: center, center;
 }
