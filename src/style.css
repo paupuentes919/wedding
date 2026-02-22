@@ -85,11 +85,15 @@ body{
 /* Top pill & status */
 .top-pill{ display:inline-flex; align-items:center; gap:10px; padding:10px 18px; border-radius:999px; border:1px solid var(--border); background: rgba(25,128,140,0.06); color:#0F3D43; font-weight:600; font-size:14px; }
 .seal-dot{ width:12px; height:12px; border-radius:50%; background: linear-gradient(135deg,#1A8A94,#158FA1); box-shadow:0 0 0 6px rgba(25,128,140,.12) }
+.warn-dot{ width:12px; height:12px; border-radius:50%; background: linear-gradient(135deg,#C4995B,#D9A14B); box-shadow:0 0 0 6px rgba(196,153,91,.12) }
+.no-dot{ width:12px; height:12px; border-radius:50%; background: linear-gradient(135deg,#ca3737,#c73a3a); box-shadow:0 0 0 6px rgba(25,128,140,.12) }
 .status-pill{ padding:10px 18px; border-radius:999px; border:1px solid rgba(25,128,140,.22); background: rgba(25,128,140,.06); font-weight:700; color:#0F3D43; font-size:13px; }
 .status-ok{ color: #1A8A94; font-weight:800; }
+.status-warn{ color: #C4995B; font-weight:800; }
 
 /* Heading */
-.heading-large{ font-size: clamp(34px, 5.5vw, 56px); line-height:1.02; letter-spacing:-0.02em; color:#0F3D43; font-family: 'Playfair Display', serif; font-weight:700; }
+.heading-large{ font-size: clamp(34px, 5.5vw, 40px); line-height:1.02; letter-spacing:-0.02em; color:#0F3D43; font-family: 'Playfair Display', serif; font-weight:700; }
+.heading-large-lower{ font-size: clamp(29px, 5.5vw, 35px); line-height:1.02; letter-spacing:-0.02em; color:#0F3D43; font-family: 'Playfair Display', serif; font-weight:700; }
 
 @media (max-width:900px){
 	.heading-large{ font-size: clamp(28px, 7vw, 40px) }

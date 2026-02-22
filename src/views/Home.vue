@@ -4,16 +4,76 @@
       <TopBar :copy="copy" :statusPill="statusPill" />
 
       <header class="mb-8">
-        <h1 class="heading-large font-playfair">{{ copy.h1 }}</h1>
-        <div class="mt-4 max-w-3xl flex items-center gap-3">
+        <h1 class="heading-large font-playfair flex justify-center mb-3 mt-6">
+          {{ copy.h1 }}
+        </h1>
+        <h2 class="heading-large-lower font-playfair flex justify-center">
+          {{ copy.h2 }}
+        </h2>
+        <div class="mt-4 max-w-4xl flex items-center gap-3">
           <div
             class="flex-1 h-px bg-gradient-to-r from-teal-800 to-transparent"
           ></div>
-          <p class="text-sm text-teal-900 font-semibold tracking-wide">
-            {{ copy.sub }}
-          </p>
         </div>
       </header>
+
+      <div class="flex justify-center mb-6">
+        <div class="photo-wrapper relative">
+          <!-- Paperclip SVG -->
+          <svg
+            class="paperclip-svg"
+            viewBox="0 0 80 100"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient
+                id="clip-gradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop
+                  offset="0%"
+                  style="stop-color: #c0cace; stop-opacity: 1"
+                />
+                <stop
+                  offset="100%"
+                  style="stop-color: #8a9299; stop-opacity: 1"
+                />
+              </linearGradient>
+            </defs>
+            <!-- Main paperclip body -->
+            <path
+              d="M 25 15 Q 15 15 15 30 L 15 65 Q 15 75 25 75 Q 35 75 35 65 L 35 35 Q 35 28 42 28 Q 49 28 49 35 L 49 65 Q 49 80 37 80 Q 22 80 22 65"
+              fill="none"
+              stroke="url(#clip-gradient)"
+              stroke-width="5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <!-- Inner shadow/depth -->
+            <path
+              d="M 27 17 Q 18 17 18 30 L 18 63 Q 18 72 26 72 Q 33 72 33 63 L 33 35 Q 33 30 40 30 Q 46 30 46 35 L 46 63 Q 46 77 36 77 Q 24 77 24 65"
+              fill="none"
+              stroke="rgba(255,255,255,0.4)"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              opacity="0.6"
+            />
+          </svg>
+
+          <!-- Photo Box -->
+          <div class="photo-box">
+            <img :src="coupleImg" alt="Couple illustration" class="photo-img" />
+          </div>
+
+          <!-- Stamp Image -->
+          <img :src="stampImg" alt="Stamp" class="stamp-image" />
+        </div>
+      </div>
 
       <!-- MAIN -->
       <section class="invitation-card shadow-xl overflow-hidden">
@@ -236,6 +296,7 @@
                 >{{ copy.attLabel }}</label
               >
               <select v-model="attendance" class="mt-2 w-full input-elem">
+                <option value="" disabled>Selecciona una opción...</option>
                 <option value="both">
                   ✅ Asisto a ambos tramos (civil + post)
                 </option>
@@ -318,7 +379,8 @@ import { ref, computed, watch } from "vue";
 import emailjs from "@emailjs/browser";
 import { saveGuest } from "../lib/supabase";
 import TopBar from "../components/TopBar.vue";
-import GuestsPanel from "../components/GuestsPanel.vue";
+import coupleImg from "../assets/paudakota.png";
+import stampImg from "../assets/stamp.png";
 
 // Inicializar EmailJS (public key proporcionada)
 emailjs.init("unNeA4QjggAdXcuek");
@@ -341,8 +403,9 @@ const COPY = {
     topStatusPending: "Estado del trámite: ",
     statusPending: "Pendiente de validación",
     statusApproved: "Entrada autorizada",
-    h1: "Ingreso autorizado para: Registro Civil + Post",
-    sub: "Se convoca a testigos civiles...",
+    statusDenied: "Ingreso denegado",
+    h1: "Autorización de entrada",
+    h2: "Registro Civil + Evento de celebración",
     docTitle: "Formulario de Ingreso — Civil Edition",
     docDesc:
       "Complete su identidad para obtener el permiso de entrada (con sello oficial).",
@@ -385,8 +448,9 @@ const COPY = {
     topStatusPending: "Case status: ",
     statusPending: "Pending validation",
     statusApproved: "Entry authorized",
-    h1: "Entry clearance for: Civil Registry + After",
-    sub: "You are invited to witness the official signing...",
+    statusDenied: "Entry denied",
+    h1: "Entry clearance",
+    h2: "Civil Registry + Celebration Event",
     docTitle: "Entry Form — Civil Edition",
     docDesc:
       "Provide your identity to receive the entry permit (with an official stamp).",
@@ -441,7 +505,7 @@ const lang = ref("es");
 const firstName = ref("");
 const lastName = ref("");
 const email = ref("");
-const attendance = ref("both");
+const attendance = ref("");
 const stampShown = ref(false);
 const toastMsg = ref("");
 const err = ref(false);
@@ -560,7 +624,7 @@ async function issue() {
       firstName.value = "";
       lastName.value = "";
       email.value = "";
-      attendance.value = "both";
+      attendance.value = "";
       stampShown.value = false;
       // NO resetear approved.value - mantener "Entrada autorizada"
       // refresh local list
@@ -592,12 +656,214 @@ function deny() {
 }
 
 const statusPill = computed(() => {
-  const cls = approved.value ? "status-ok" : "";
-  const text = approved.value
-    ? copy.value.statusApproved
-    : copy.value.statusPending;
-  return `${copy.value.topStatusPending}<b class="${cls}" style="margin-left:.5rem">${text}</b>`;
+  let dotClass = "warn-dot"; // Por defecto: pendiente
+  let textClass = "status-warn";
+  let text = copy.value.statusPending;
+
+  if (attendance.value === "no") {
+    // Ingreso denegado
+    dotClass = "no-dot";
+    textClass = "status-warn"; // o puedes crear una clase status-no
+    text = copy.value.statusDenied;
+  } else if (["both", "civil", "post"].includes(attendance.value)) {
+    // Entrada autorizada
+    dotClass = "seal-dot";
+    textClass = "status-ok";
+    text = copy.value.statusApproved;
+  }
+
+  return `<span class="${dotClass}"></span><b class="${textClass}" style="margin-left:.5rem">${copy.value.topStatusPending}${text}</b>`;
 });
 
 watch([firstName, lastName, attendance, lang], () => {});
 </script>
+
+<style scoped>
+.photo-wrapper {
+  width: 100%;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.photo-box {
+  position: relative;
+  padding: 1rem;
+  background: linear-gradient(
+    180deg,
+    rgba(203, 169, 125, 0.9),
+    rgba(179, 139, 90, 0.9)
+  );
+  border-radius: 0.25rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.photo-img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  border: 6px solid #f7ead6;
+  box-shadow: 0 6px 18px rgba(25, 128, 140, 0.08);
+  background: #fff;
+}
+
+/* Paperclip */
+.paperclip-svg {
+  position: absolute;
+  top: 6px;
+  left: 12px;
+  width: 70px;
+  height: 85px;
+  transform: rotate(-15deg);
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.15));
+  opacity: 0.95;
+  z-index: 10;
+}
+
+/* Stamp Image */
+.stamp-image {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  width: 120px;
+  height: auto;
+  transform: rotate(-15deg);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  z-index: 8;
+}
+
+/* Dual Stamps Container */
+.stamps-container {
+  position: absolute;
+  right: 0;
+  bottom: -25px;
+  width: 100%;
+  height: 200px;
+  z-index: 5;
+}
+
+.stamp-item {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 140px;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.2));
+}
+
+.stamp-love {
+  right: 80px;
+  bottom: 30px;
+  transform: rotate(-20deg);
+}
+
+.stamp-authenticated {
+  right: -10px;
+  bottom: 0;
+  transform: rotate(15deg);
+}
+
+.stamp-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.stamp-text-wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #000;
+  text-align: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.stamp-text-main {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-shadow:
+    0 2px 3px rgba(255, 255, 255, 0.7),
+    0 -1px 1px rgba(0, 0, 0, 0.2);
+  color: #000;
+  font-style: italic;
+}
+
+.stamp-bold-text {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.stamp-small-text {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-weight: 700;
+  font-size: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 2px;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .photo-wrapper {
+    max-width: 92%;
+  }
+
+  .stamp-item {
+    width: 110px;
+    height: 110px;
+  }
+
+  .stamp-love {
+    right: 60px;
+    bottom: 20px;
+  }
+
+  .stamp-authenticated {
+    right: -5px;
+    bottom: -5px;
+  }
+
+  .stamp-text-main {
+    font-size: 11px;
+    letter-spacing: 0.8px;
+  }
+
+  .stamp-bold-text {
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .stamp-small-text {
+    font-size: 7px;
+    margin-top: 1px;
+  }
+
+  .paperclip-svg {
+    width: 56px;
+    height: 68px;
+    left: 8px;
+    top: 6px;
+  }
+
+  .stamp-image {
+    width: 90px;
+    bottom: -10px;
+    right: -15px;
+  }
+}
+</style>
