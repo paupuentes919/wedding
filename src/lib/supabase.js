@@ -24,20 +24,3 @@ export async function saveGuest(firstName, lastName, email, attendance) {
     return { success: false, error: error.message || String(error) }
   }
 }
-
-// Función para recuperar últimos guests
-export async function fetchGuests(limit = 10) {
-  try {
-    const { data, error } = await supabase
-      .from('guests')
-      .select('*')
-      .order('created_at', { ascending: false })
-      .limit(limit)
-
-    if (error) throw error
-    return { success: true, data }
-  } catch (error) {
-    console.error('Error al leer guests:', error)
-    return { success: false, error: error.message }
-  }
-}

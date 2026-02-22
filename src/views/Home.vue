@@ -297,53 +297,42 @@
           </div>
         </section>
 
-        <!-- SIDE -->
-        <aside>
-          <div
-            class="bg-white/60 border border-teal-200 rounded-2xl p-5 mb-5 shadow-sm"
+        <div
+          class="bg-white/60 border border-teal-200 rounded-2xl p-5 mb-5 shadow-sm"
+        >
+          <h3
+            class="text-xs font-mono uppercase text-teal-900 font-extrabold tracking-widest"
           >
-            <h3
-              class="text-xs font-mono uppercase text-teal-900 font-extrabold tracking-widest"
-            >
-              {{ copy.sideTitle }}
-            </h3>
-            <ul class="mt-4 space-y-3 text-sm text-teal-800">
-              <li v-html="copy.r1"></li>
-              <li v-html="copy.r2"></li>
-              <li v-html="copy.r3"></li>
-              <li v-html="copy.r4"></li>
-            </ul>
-            <div
-              class="border-t border-teal-100 mt-4 pt-4 text-sm text-teal-700 font-medium"
-            >
-              {{ copy.sideNote }}
-            </div>
+            {{ copy.sideTitle }}
+          </h3>
+          <ul class="mt-4 space-y-3 text-sm text-teal-800">
+            <li v-html="copy.r1"></li>
+            <li v-html="copy.r2"></li>
+            <li v-html="copy.r3"></li>
+            <li v-html="copy.r4"></li>
+          </ul>
+          <div
+            class="border-t border-teal-100 mt-4 pt-4 text-sm text-teal-700 font-medium"
+          >
+            {{ copy.sideNote }}
           </div>
+        </div>
 
-          <div
-            class="bg-white/60 border border-teal-200 rounded-2xl p-5 shadow-sm"
+        <div
+          class="bg-white/60 border border-teal-200 rounded-2xl p-5 shadow-sm"
+        >
+          <h3
+            class="text-xs font-mono uppercase text-teal-900 font-extrabold tracking-widest"
           >
-            <h3
-              class="text-xs font-mono uppercase text-teal-900 font-extrabold tracking-widest"
-            >
-              {{ copy.faqTitle }}
-            </h3>
-            <ul class="mt-4 space-y-3 text-sm text-teal-800">
-              <li v-html="copy.f1"></li>
-              <li v-html="copy.f2"></li>
-              <li v-html="copy.f3"></li>
-            </ul>
-          </div>
-        </aside>
+            {{ copy.faqTitle }}
+          </h3>
+          <ul class="mt-4 space-y-3 text-sm text-teal-800">
+            <li v-html="copy.f1"></li>
+            <li v-html="copy.f2"></li>
+            <li v-html="copy.f3"></li>
+          </ul>
+        </div>
       </div>
-
-      <!-- Quick guests panel (debug) -->
-      <GuestsPanel
-        :guests="guests"
-        :loadingGuests="loadingGuests"
-        @load="loadGuests"
-      />
-
       <footer class="mt-8 text-center text-sm text-teal-700 font-medium">
         {{ copy.foot }}
       </footer>
@@ -356,7 +345,7 @@
 <script setup>
 import { ref, computed, watch } from "vue";
 import emailjs from "@emailjs/browser";
-import { saveGuest, fetchGuests } from "../lib/supabase";
+import { saveGuest } from "../lib/supabase";
 import TopBar from "../components/TopBar.vue";
 import GuestsPanel from "../components/GuestsPanel.vue";
 
@@ -604,25 +593,8 @@ async function issue() {
       stampShown.value = false;
       approved.value = false;
       // refresh local list
-      loadGuests();
     }, 2000);
   }, 40);
-}
-
-async function loadGuests() {
-  loadingGuests.value = true;
-  const res = await fetchGuests(8);
-  loadingGuests.value = false;
-  if (!res.success) {
-    console.error("Error fetching guests:", res.error);
-    showToast(
-      lang.value === "es"
-        ? `Error al leer invitados: ${res.error}`
-        : `Read error: ${res.error}`,
-    );
-    return;
-  }
-  guests.value = res.data || [];
 }
 
 function deny() {
