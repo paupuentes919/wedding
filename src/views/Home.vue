@@ -1,9 +1,10 @@
 <template>
   <div class="min-h-screen">
-    <section class="hero-tramite hpad-20">
-      <div class="max-w-7xl mx-auto">
-        <TopBar :copy="copy" :statusPill="statusPill" />
-
+    <section
+      class="hero-tramite hpad-20"
+      :style="{ '--hero-bg': `url(${heroBg})` }"
+    >
+      <div class="max-w-7xl mx-auto mt-3">
         <div class="flex justify-center sm:justify-end gap-2 mb-3">
           <button
             :class="[
@@ -43,23 +44,27 @@
           </button>
         </div>
 
+        <TopBar :copy="copy" :statusPill="statusPill" />
+
         <header class="mb-8">
-          <h1 class="heading-large font-tramite flex justify-center mb-3 mt-6">
+          <h1
+            class="heading-large font-montserrat flex justify-center mb-3 mt-6"
+          >
             {{ copy.h1 }}
           </h1>
-          <h2 class="heading-large-lower font-tramite flex justify-center">
+          <h2 class="heading-large-lower font-montserrat flex justify-center">
             {{ copy.h2 }}
           </h2>
           <div class="mt-4 max-w-4xl flex items-center gap-3">
             <div
-              class="flex-1 h-px bg-gradient-to-r from-teal-800 to-transparent"
+              class="flex-1 h-[2.5px] bg-gradient-to-r from-teal-800 to-transparent"
             ></div>
           </div>
         </header>
       </div>
     </section>
 
-    <div class="hpad-20">
+    <div class="hpad-20 mt-6">
       <div class="max-w-7xl mx-auto">
         <div class="flex justify-center mb-6">
           <div class="photo-wrapper relative">
@@ -410,6 +415,8 @@ import emailjs from "@emailjs/browser";
 import { saveGuest } from "../lib/supabase";
 import TopBar from "../components/TopBar.vue";
 import coupleImg from "../assets/paudakota.png";
+import argPhoto from "../assets/argphoto.png";
+import usaPhoto from "../assets/usaphoto.png";
 import stampImg from "../assets/stamp.png";
 
 // Inicializar EmailJS (public key proporcionada)
@@ -542,6 +549,7 @@ const err = ref(false);
 const approved = ref(false);
 
 const copy = computed(() => COPY[lang.value]);
+const heroBg = computed(() => (lang.value === "es" ? argPhoto : usaPhoto));
 const guests = ref([]);
 const loadingGuests = ref(false);
 
