@@ -17,6 +17,6 @@
 <script setup>
 defineProps({
   copy: { type: Object, required: true },
-  statusPill: { type: String, required: true }
-})
+  statusPill: { type: String, required: true },
+});
 </script>
