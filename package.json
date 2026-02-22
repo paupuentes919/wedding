@@ -8,6 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@supabase/supabase-js": "^2.97.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.0"
   },
