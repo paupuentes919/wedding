@@ -7,7 +7,7 @@
       <div class="max-w-7xl mx-auto mt-3">
         <div class="flex justify-center sm:justify-end gap-2 mb-3">
           <button
-            :class="[ 
+            :class="[
               'px-4 py-2.5 rounded-lg font-bold text-sm border transition-all',
               lang === 'es'
                 ? 'bg-gradient-to-br from-slate-900 to-slate-800 border-slate-950 text-white shadow-md'
@@ -25,7 +25,7 @@
             </span>
           </button>
           <button
-            :class="[ 
+            :class="[
               'px-4 py-2.5 rounded-lg font-bold text-sm border transition-all',
               lang === 'en'
                 ? 'bg-gradient-to-br from-slate-900 to-slate-800 border-slate-950 text-white shadow-md'
@@ -56,9 +56,9 @@
             {{ copy.h2 }}
           </h2>
           <div class="mt-4 max-w-4xl flex items-center gap-3">
-              <div
-                class="flex-1 h-[2.5px] bg-gradient-to-r from-slate-800 to-transparent"
-              ></div>
+            <div
+              class="flex-1 h-[2.5px] bg-gradient-to-r from-slate-800 to-transparent"
+            ></div>
           </div>
         </header>
       </div>
@@ -165,32 +165,46 @@
                 {{ copy.coupleTitle }}
               </h3>
               <div class="flex gap-6 flex-wrap">
-                <div class="flex-1 min-w-[160px]">
-                  <label
-                    class="text-xs text-slate-600 font-bold uppercase tracking-wide"
-                    >{{ copy.brideLabel }}</label
-                  >
-                  <div
-                    class="font-bold text-slate-900 text-lg mt-2 font-playfair"
-                  >
-                    Paula Puentes
-                  </div>
-                  <div class="text-xs text-slate-600 mt-1">
-                    {{ copy.brideNat }}
+                <div class="flex-1 min-w-[160px] flex items-start gap-3">
+                  <img
+                    :src="paulaform"
+                    alt="Paula"
+                    class="w-20 h-24 object-cover rounded-lg border border-stone-400 flex-shrink-0"
+                  />
+                  <div>
+                    <label
+                      class="text-xs text-slate-600 font-bold uppercase tracking-wide"
+                      >{{ copy.brideLabel }}</label
+                    >
+                    <div
+                      class="font-bold text-slate-900 text-lg mt-1 font-playfair"
+                    >
+                      Paula Puentes
+                    </div>
+                    <div class="text-xs text-slate-600 mt-1">
+                      {{ copy.brideNat }}
+                    </div>
                   </div>
                 </div>
-                <div class="flex-1 min-w-[160px]">
-                  <label
-                    class="text-xs text-slate-600 font-bold uppercase tracking-wide"
-                    >{{ copy.groomLabel }}</label
-                  >
-                  <div
-                    class="font-bold text-slate-900 text-lg mt-2 font-playfair"
-                  >
-                    Dakota Wendel
-                  </div>
-                  <div class="text-xs text-slate-600 mt-1">
-                    {{ copy.groomNat }}
+                <div class="flex-1 min-w-[160px] flex items-start gap-3">
+                  <img
+                    :src="dakotaform"
+                    alt="Dakota"
+                    class="w-20 h-24 object-cover rounded-lg border border-stone-400 flex-shrink-0"
+                  />
+                  <div>
+                    <label
+                      class="text-xs text-slate-600 font-bold uppercase tracking-wide"
+                      >{{ copy.groomLabel }}</label
+                    >
+                    <div
+                      class="font-bold text-slate-900 text-lg mt-1 font-playfair"
+                    >
+                      Dakota Wendel
+                    </div>
+                    <div class="text-xs text-slate-600 mt-1">
+                      {{ copy.groomNat }}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -269,6 +283,40 @@
                 class="text-xs text-slate-500 mt-4 italic border-t border-stone-200 pt-3"
               >
                 {{ copy.itHint }}
+              </div>
+            </div>
+
+            <!-- FAQ -->
+            <div
+              class="bg-white/60 border border-stone-300 rounded-2xl p-5 shadow-sm mb-5"
+            >
+              <h3
+                class="text-xs font-mono uppercase text-slate-900 font-extrabold tracking-widest"
+              >
+                {{ copy.faqTitle }}
+              </h3>
+              <ul class="mt-4 space-y-3 text-sm text-slate-700">
+                <li v-html="copy.f1"></li>
+                <li v-html="copy.f2"></li>
+                <li v-html="copy.f3"></li>
+              </ul>
+            </div>
+
+            <div
+              v-if="lang === 'es'"
+              class="bg-white/60 border border-stone-300 rounded-2xl p-5 shadow-sm mb-5"
+            >
+              <h3
+                class="text-xs font-mono uppercase text-slate-900 font-extrabold tracking-widest"
+              >
+                {{ copy.giftTitle }}
+              </h3>
+              <div class="mt-4 space-y-3 text-sm text-slate-700">
+                <p>{{ copy.giftP1 }}</p>
+                <p>{{ copy.giftP2 }}</p>
+                <p class="font-bold text-slate-900">{{ copy.giftCbu }}</p>
+                <p class="font-bold text-slate-900">{{ copy.giftHolder }}</p>
+                <p class="font-bold text-slate-900">{{ copy.giftAlias }}</p>
               </div>
             </div>
 
@@ -384,21 +432,6 @@
             </div>
           </div>
         </section>
-
-        <div
-          class="bg-white/60 border border-stone-300 rounded-2xl p-5 shadow-sm"
-        >
-          <h3
-            class="text-xs font-mono uppercase text-slate-900 font-extrabold tracking-widest"
-          >
-            {{ copy.faqTitle }}
-          </h3>
-          <ul class="mt-4 space-y-3 text-sm text-slate-700">
-            <li v-html="copy.f1"></li>
-            <li v-html="copy.f2"></li>
-            <li v-html="copy.f3"></li>
-          </ul>
-        </div>
       </div>
       <footer class="mt-8 text-center text-sm text-slate-600 font-medium">
         {{ copy.foot }}
@@ -418,6 +451,8 @@ import coupleImg from "../assets/paudakota.png";
 import argPhoto from "../assets/argphoto.png";
 import usaPhoto from "../assets/usaphoto.png";
 import stampImg from "../assets/stamp.png";
+import paulaform from "../assets/paulaform.png";
+import dakotaform from "../assets/dakotaform.png";
 
 // Inicializar EmailJS (public key proporcionada)
 emailjs.init("unNeA4QjggAdXcuek");
@@ -443,21 +478,20 @@ const COPY = {
     statusDenied: "Ingreso denegado",
     h1: "Autorización de entrada",
     h2: "Registro Civil + Evento de celebración",
-    docTitle: "Formulario de Ingreso — Civil Edition",
+    docTitle: "Formulario de ingreso — Civil Edition",
     docDesc:
-      "Complete su identidad para obtener el permiso de entrada (con sello oficial).",
+      "Complete su identidad para obtener el permiso de entrada con sello oficial",
     coupleTitle: "Dossier de las partes",
     brideLabel: "Novia / Applicant A",
     groomLabel: "Novio / Applicant B",
-    brideNat: "Nacionalidad: Argentina 🇦🇷",
-    groomNat: "Nacionalidad: Estadounidense 🇺🇸",
-    coupleHint:
-      "Observación: el intercambio cultural es sostenido y no reversible. Se recomienda presencia.",
+    brideNat: "Nacionalidad: Argentina",
+    groomNat: "Nacionalidad: Estadounidense",
+    coupleHint: "Observación: Conexión detectada. Intervención civil requerida",
     itTitle: "Itinerario de ingreso (2 tramos)",
     stop1Badge: "Puesto 1 — Registro Civil",
     stop2Badge: "Puesto 2 — Post Registro Civil",
     itHint:
-      "Nota: se permite ingreso a uno o ambos tramos. Su confirmación ayuda a logística (y a la paz mundial).",
+      "Nota: Participación parcial (solo 1 tramo) o total (ambos tramos) habilitada. Su compañía será debidamente celebrada",
     issueBtn: "🛂 Emitir permiso de entrada",
     waBtn: "✅ Confirmar por WhatsApp",
     denyBtn: "🚫 Denegar ingreso",
@@ -466,9 +500,17 @@ const COPY = {
     stamp: "APROBADO ✅\nENTRADA AUTORIZADA\nSIN REEMBOLSO",
     err: "Complete nombre y apellido para emitir el permiso.",
     faqTitle: "FAQ",
-    f1: "<b>¿Tengo que ir a los dos?</b> No. Vos elegís.",
-    f2: "<b>¿Puedo confirmar por WhatsApp?</b> Sí, y queda asentado en acta.",
-    f3: "<b>¿Puedo tocar “denegar”?</b> Podés, pero no te sirve de nada 😄",
+    f1: "<b>¿Tengo que ir a los dos tramos?</b> No. Asistencia opcional a uno o ambos tramos. Vos elegís",
+    f2: "<b>¿Cómo debo ir vestido?</b> Elegante sport",
+    f3: "<b>PARKING</b>",
+    giftTitle: "Contribucion simbolica",
+    giftP1:
+      "De acuerdo con la normativa vigente, su presencia ha sido previamente clasificada como aporte suficiente y de alto valor afectivo",
+    giftP2:
+      "No obstante, conforme al Codigo de Contribuciones Simbolicas,se autoriza el ingreso con obsequio voluntario para quienes asi lo dispongan",
+    giftCbu: "CBU: 00701583-30004038295770",
+    giftHolder: "Titular: Paula Puentes",
+    giftAlias: "Alias: pau.dakota.boda",
     foot: "Hecho con amor, burocracia falsa y un trámite real. ✨",
     entryIntent: (v) =>
       ({
@@ -490,19 +532,18 @@ const COPY = {
     h2: "Civil Registry + Celebration Event",
     docTitle: "Entry Form — Civil Edition",
     docDesc:
-      "Provide your identity to receive the entry permit (with an official stamp).",
+      "Provide your identity to receive the entry permit with an official stamp",
     coupleTitle: "Applicant dossier",
     brideLabel: "Bride / Applicant A",
     groomLabel: "Groom / Applicant B",
-    brideNat: "Nationality: Argentinian 🇦🇷",
-    groomNat: "Nationality: American 🇺🇸",
-    coupleHint:
-      "Observation: the cultural exchange is sustained and non-reversible. Attendance is strongly encouraged.",
+    brideNat: "Nationality: Argentinian",
+    groomNat: "Nationality: American",
+    coupleHint: "Observation: Connection detected. Civil intervention required",
     itTitle: "Entry route (2 checkpoints)",
     stop1Badge: "Checkpoint 1 — Civil Registry",
     stop2Badge: "Checkpoint 2 — After Civil Registry",
     itHint:
-      "Note: entry is allowed to one or both checkpoints. Your confirmation helps logistics (and world peace).",
+      "Note: Partial participation (only 1 checkpoint) or full participation (both checkpoints) is allowed. Your presence will be duly celebrated",
     formTitle: "Visitor details (you)",
     nameLabel: "First name",
     lastLabel: "Last name",
@@ -522,9 +563,17 @@ const COPY = {
     r4: "<b>Neutral zone:</b> mate vs coffee / asado vs barbecue.",
     sideNote: "Final resolution: we consume both. (Diplomacy + hunger.)",
     faqTitle: "FAQ",
-    f1: "<b>Do I have to attend both?</b> No. Your choice.",
-    f2: "<b>Can I confirm via WhatsApp?</b> Yes, and it will be recorded officially (emotionally).",
-    f3: "<b>Can I press “deny”?</b> You can. It just won’t help 😄",
+    f1: "<b>Do I have to attend both segments?</b> No. Optional attendance for one or both segments. Your choice",
+    f2: "<b>How should I dress?</b> Elegant casual",
+    f3: "<b>PARKING</b>",
+    giftTitle: "Symbolic contribution",
+    giftP1:
+      "Per current regulations, your presence has already been classified as a sufficient contribution of high affective value.",
+    giftP2:
+      "Nevertheless, under the Symbolic Contributions Code, optional clause, entry is authorized with a voluntary gift for those who wish to do so.",
+    giftCbu: "CBU: 00701583-30004038295770",
+    giftHolder: "Account holder: Paula Puentes",
+    giftAlias: "Alias: pau.dakota.boda",
     foot: "Made with love, fake bureaucracy, and a real legal step. ✨",
     entryIntent: (v) =>
       ({
