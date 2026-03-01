@@ -319,119 +319,132 @@
                 <p class="font-bold text-slate-900">{{ copy.giftAlias }}</p>
               </div>
             </div>
-
-            <!-- Form -->
-            <div
-              class="bg-white/60 rounded-2xl p-5 border border-stone-300 shadow-sm"
-            >
-              <h3
-                class="text-xs font-mono uppercase mb-4 text-slate-900 font-extrabold tracking-widest"
-              >
-                {{ copy.formTitle }}
-              </h3>
-
-              <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    class="text-xs text-slate-600 font-bold uppercase tracking-wide"
-                    >{{ copy.nameLabel }}</label
-                  >
-                  <input
-                    v-model="firstName"
-                    class="mt-2 w-full input-elem outline-none"
-                    placeholder="Ej: Juan / John"
-                  />
-                </div>
-                <div>
-                  <label
-                    class="text-xs text-slate-600 font-bold uppercase tracking-wide"
-                    >{{ copy.lastLabel }}</label
-                  >
-                  <input
-                    v-model="lastName"
-                    class="mt-2 w-full input-elem outline-none"
-                    placeholder="Ej: Pérez / Smith"
-                  />
-                </div>
-              </div>
-
-              <div class="mt-4">
-                <label
-                  class="text-xs text-slate-600 font-bold uppercase tracking-wide"
-                  >Email</label
-                >
-                <input
-                  v-model="email"
-                  type="email"
-                  class="mt-2 w-full input-elem outline-none"
-                  placeholder="tu@email.com"
-                />
-              </div>
-
-              <!-- Phone fields removed; Email remains optional -->
-
-              <div class="mt-4">
-                <label
-                  class="text-xs text-slate-600 font-bold uppercase tracking-wide"
-                  >{{ copy.attLabel }}</label
-                >
-                <select v-model="attendance" class="mt-2 w-full input-elem">
-                  <option value="" disabled>Selecciona una opción...</option>
-                  <option value="both">
-                    ✅ Asisto a ambos tramos (civil + post)
-                  </option>
-                  <option value="civil">✅ Solo Registro Civil</option>
-                  <option value="post">✅ Solo Post Registro Civil</option>
-                  <option value="no">
-                    ❌ No puedo asistir (apoyo moral a distancia)
-                  </option>
-                </select>
-                <div class="text-xs text-slate-500 mt-2 italic">
-                  {{ copy.attHint }}
-                </div>
-                <div v-if="err" class="text-sm text-rose-600 mt-2 font-bold">
-                  {{ copy.err }}
-                </div>
-              </div>
-
-              <div class="mt-5 flex flex-wrap gap-3">
-                <button @click="issue" class="btn-primary">
-                  🛂 {{ copy.issueBtn }}
-                </button>
-                <button @click="deny" class="btn-ghost">
-                  🚫 {{ copy.denyBtn }}
-                </button>
-              </div>
-
-              <div
-                class="mt-5 bg-gradient-to-br from-stone-50 to-amber-50 border border-dashed border-stone-400 rounded-2xl p-5 relative"
-              >
-                <div class="flex items-center justify-between mb-3">
-                  <b class="font-mono text-slate-900 text-sm font-extrabold">{{
-                    copy.permitTitle
-                  }}</b>
-                  <span class="text-xs text-slate-600 font-mono"
-                    >CODE: ENTRY-RC-PAU-DAK</span
-                  >
-                </div>
-                <pre
-                  class="font-mono text-sm text-slate-700 whitespace-pre-wrap"
-                  >{{ mrz }}</pre
-                >
-                <div
-                  :class="[
-                    'absolute right-4 top-14 px-3 py-2 rounded-xl font-mono text-xs border',
-                    stampShown
-                      ? 'stamp-mark show stamp-large border-emerald-300 text-emerald-300 bg-black/40'
-                      : 'stamp-mark stamp-large border-emerald-300 text-emerald-300 bg-black/20',
-                  ]"
-                >
-                  {{ copy.stamp }}
-                </div>
-              </div>
-            </div>
           </div>
         </section>
+      </div>
+      <!-- Form -->
+      <div class="invitation-card shadow-xl overflow-hidden">
+        <div
+          class="flex items-start justify-between px-7 py-6"
+          style="
+            background: linear-gradient(
+              180deg,
+              rgba(45, 52, 70, 0.06),
+              transparent
+            );
+            border-bottom: 1px solid rgba(45, 52, 70, 0.16);
+          "
+        >
+          <div>
+            <div class="font-extrabold text-lg font-playfair text-slate-900">
+              {{ copy.formTitle }}
+            </div>
+            <div class="text-sm text-slate-700 mt-1">{{ copy.formDesc }}</div>
+          </div>
+          <div
+            class="font-mono text-xs bg-white border border-stone-400 rounded-full px-4 py-1.5 text-slate-900 font-bold tracking-wider"
+          >
+            ID P-RC-2026
+          </div>
+        </div>
+
+        <div class="p-5">
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label
+              class="text-xs text-slate-600 font-bold uppercase tracking-wide"
+              >{{ copy.nameLabel }}</label
+            >
+            <input
+              v-model="firstName"
+              class="mt-2 w-full input-elem outline-none"
+              placeholder="Ej: Juan / John"
+            />
+          </div>
+          <div>
+            <label
+              class="text-xs text-slate-600 font-bold uppercase tracking-wide"
+              >{{ copy.lastLabel }}</label
+            >
+            <input
+              v-model="lastName"
+              class="mt-2 w-full input-elem outline-none"
+              placeholder="Ej: Pérez / Smith"
+            />
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <label
+            class="text-xs text-slate-600 font-bold uppercase tracking-wide"
+            >Email</label
+          >
+          <input
+            v-model="email"
+            type="email"
+            class="mt-2 w-full input-elem outline-none"
+            placeholder="tu@email.com"
+          />
+        </div>
+
+        <div class="mt-4">
+          <label
+            class="text-xs text-slate-600 font-bold uppercase tracking-wide"
+            >{{ copy.attLabel }}</label
+          >
+          <select v-model="attendance" class="mt-2 w-full input-elem">
+            <option value="" disabled>Selecciona una opción...</option>
+            <option value="both">
+              ✅ Asisto a ambos tramos (civil + post)
+            </option>
+            <option value="civil">✅ Solo Registro Civil</option>
+            <option value="post">✅ Solo Post Registro Civil</option>
+            <option value="no">
+              ❌ No puedo asistir (apoyo moral a distancia)
+            </option>
+          </select>
+          <div class="text-xs text-slate-500 mt-2 italic">
+            {{ copy.attHint }}
+          </div>
+          <div v-if="err" class="text-sm text-rose-600 mt-2 font-bold">
+            {{ copy.err }}
+          </div>
+        </div>
+
+        <div class="mt-5 flex flex-wrap gap-3">
+          <button @click="issue" class="btn-primary">
+            🛂 {{ copy.issueBtn }}
+          </button>
+          <button @click="deny" class="btn-ghost">🚫 {{ copy.denyBtn }}</button>
+        </div>
+
+        <div
+          class="mt-5 bg-gradient-to-br from-stone-50 to-amber-50 border border-dashed border-stone-400 rounded-2xl p-5 relative"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <b class="font-mono text-slate-900 text-sm font-extrabold">{{
+              copy.permitTitle
+            }}</b>
+            <span class="text-xs text-slate-600 font-mono"
+              >CODE: ENTRY-RC-PAU-DAK</span
+            >
+          </div>
+          <pre class="font-mono text-sm text-slate-700 whitespace-pre-wrap">{{
+            mrz
+          }}</pre>
+          <div
+            :class="[
+              'absolute right-4 top-14 px-3 py-2 rounded-xl font-mono text-xs border',
+              stampShown
+                ? 'stamp-mark show stamp-large border-emerald-300 text-emerald-300 bg-black/40'
+                : 'stamp-mark stamp-large border-emerald-300 text-emerald-300 bg-black/20',
+            ]"
+          >
+            {{ copy.stamp }}
+          </div>
+        </div>
+        </div>
       </div>
       <footer class="mt-8 text-center text-sm text-slate-600 font-medium">
         {{ copy.foot }}
@@ -492,6 +505,8 @@ const COPY = {
     stop2Badge: "Puesto 2 — Post Registro Civil",
     itHint:
       "Nota: Participación parcial (solo 1 tramo) o total (ambos tramos) habilitada. Su compañía será debidamente celebrada",
+    formTitle: "Datos de ingreso — Participante",
+    formDesc: "Complete los datos requeridos para validar su entrada al evento",
     issueBtn: "🛂 Emitir permiso de entrada",
     waBtn: "✅ Confirmar por WhatsApp",
     denyBtn: "🚫 Denegar ingreso",
@@ -544,7 +559,8 @@ const COPY = {
     stop2Badge: "Checkpoint 2 — After Civil Registry",
     itHint:
       "Note: Partial participation (only 1 checkpoint) or full participation (both checkpoints) is allowed. Your presence will be duly celebrated",
-    formTitle: "Visitor details (you)",
+    formTitle: "Entry data — Participant",
+    formDesc: "Complete the required details to validate your entry to the event",
     nameLabel: "First name",
     lastLabel: "Last name",
     attLabel: "Entry declaration (attendance)",
