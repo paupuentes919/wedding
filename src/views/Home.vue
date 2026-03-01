@@ -322,8 +322,219 @@
           </div>
         </section>
       </div>
+
+      <!-- Timeline Section -->
+      <div class="invitation-card shadow-xl overflow-hidden mt-6">
+        <div
+          class="flex items-start justify-between px-7 py-6"
+          style="
+            background: linear-gradient(
+              180deg,
+              rgba(45, 52, 70, 0.06),
+              transparent
+            );
+            border-bottom: 1px solid rgba(45, 52, 70, 0.16);
+          "
+        >
+          <div>
+            <div class="font-extrabold text-lg font-playfair text-slate-900">
+              {{ copy.timelineTitle }}
+            </div>
+            <div class="text-sm text-slate-700 mt-1">
+              {{ copy.timelineDesc }}
+            </div>
+          </div>
+          <div
+            class="font-mono text-xs bg-white border border-stone-400 rounded-full px-4 py-1.5 text-slate-900 font-bold tracking-wider"
+          >
+            ID E-TH-2022-2026
+          </div>
+        </div>
+
+        <div class="p-5">
+          <!-- Timeline Container -->
+          <div class="timeline-wrapper">
+            <!-- 2022 -->
+            <div class="timeline-item">
+              <div class="timeline-badge">2022</div>
+              <div class="timeline-card">
+                <div class="timeline-stamp">
+                  📌 {{ copy.timeline2022Title }}
+                </div>
+                <div class="timeline-photos-grid">
+                  <div class="timeline-photo-box">
+                    <img
+                      src="/src/assets/timeline/2022-1.jpg"
+                      alt="2022 - 1"
+                      class="timeline-photo"
+                    />
+                  </div>
+                  <div class="timeline-photo-box">
+                    <img
+                      src="/src/assets/timeline/2022-2.jpg"
+                      alt="2022 - 2"
+                      class="timeline-photo"
+                    />
+                  </div>
+                  <div class="timeline-photo-box">
+                    <img
+                      src="/src/assets/timeline/2022-3.jpg"
+                      alt="2022 - 3"
+                      class="timeline-photo"
+                    />
+                  </div>
+                </div>
+                <div class="timeline-note">{{ copy.timeline2022Text }}</div>
+              </div>
+            </div>
+
+            <!-- 2023 -->
+            <div class="timeline-item">
+              <div class="timeline-badge">2023</div>
+              <div class="timeline-card">
+                <div class="timeline-stamp">
+                  📌 {{ copy.timeline2023Title }}
+                </div>
+                <div class="timeline-photos-grid">
+                  <div class="timeline-photo-box">
+                    <img
+                      src="/src/assets/timeline/2023-1.jpg"
+                      alt="2023 - 1"
+                      class="timeline-photo"
+                    />
+                  </div>
+                  <div class="timeline-photo-box">
+                    <img
+                      src="/src/assets/timeline/2023-2.jpg"
+                      alt="2023 - 2"
+                      class="timeline-photo"
+                    />
+                  </div>
+                  <div class="timeline-photo-box">
+                    <img
+                      src="/src/assets/timeline/2023-3.jpg"
+                      alt="2023 - 3"
+                      class="timeline-photo"
+                    />
+                  </div>
+                </div>
+                <div class="timeline-note">{{ copy.timeline2023Text }}</div>
+              </div>
+            </div>
+
+            <!-- 2024 -->
+            <div class="timeline-item">
+              <div class="timeline-badge">2024</div>
+              <div class="timeline-card">
+                <div class="timeline-stamp">
+                  📌 {{ copy.timeline2024Title }}
+                </div>
+                <div class="timeline-photos-grid">
+                  <div class="timeline-photo-box">
+                    <img
+                      src="/src/assets/timeline/2024-1.jpg"
+                      alt="2024 - 1"
+                      class="timeline-photo"
+                    />
+                  </div>
+                  <div class="timeline-photo-box">
+                    <img
+                      src="/src/assets/timeline/2024-2.jpg"
+                      alt="2024 - 2"
+                      class="timeline-photo"
+                    />
+                  </div>
+                  <div class="timeline-photo-box">
+                    <img
+                      src="/src/assets/timeline/2024-3.jpg"
+                      alt="2024 - 3"
+                      class="timeline-photo"
+                    />
+                  </div>
+                </div>
+                <div class="timeline-note">{{ copy.timeline2024Text }}</div>
+              </div>
+            </div>
+
+            <!-- 2025 -->
+            <div class="timeline-item">
+              <div class="timeline-badge">2025</div>
+              <div class="timeline-card">
+                <div class="timeline-stamp">
+                  📌 {{ copy.timeline2025Title }}
+                </div>
+                <div class="timeline-photos-grid">
+                  <div class="timeline-photo-box">
+                    <img
+                      src="/src/assets/timeline/2025-1.jpg"
+                      alt="2025 - 1"
+                      class="timeline-photo"
+                    />
+                  </div>
+                  <div class="timeline-photo-box">
+                    <img
+                      src="/src/assets/timeline/2025-2.jpg"
+                      alt="2025 - 2"
+                      class="timeline-photo"
+                    />
+                  </div>
+                  <div class="timeline-photo-box">
+                    <img
+                      src="/src/assets/timeline/2025-3.jpg"
+                      alt="2025 - 3"
+                      class="timeline-photo"
+                    />
+                  </div>
+                </div>
+                <div class="timeline-note">{{ copy.timeline2025Text }}</div>
+              </div>
+            </div>
+
+            <!-- 2026 -->
+            <div class="timeline-item">
+              <div class="timeline-badge">2026</div>
+              <div class="timeline-card">
+                <div class="timeline-stamp">
+                  📌 {{ copy.timeline2026Title }}
+                </div>
+                <div class="timeline-photos-grid">
+                  <div class="timeline-photo-box">
+                    <img
+                      src="/src/assets/timeline/2026-1.jpg"
+                      alt="2026 - 1"
+                      class="timeline-photo"
+                    />
+                  </div>
+                  <div class="timeline-photo-box">
+                    <img
+                      src="/src/assets/timeline/2026-2.jpg"
+                      alt="2026 - 2"
+                      class="timeline-photo"
+                    />
+                  </div>
+                  <div class="timeline-photo-box">
+                    <img
+                      src="/src/assets/timeline/2026-3.jpg"
+                      alt="2026 - 3"
+                      class="timeline-photo"
+                    />
+                  </div>
+                </div>
+                <div class="timeline-note">{{ copy.timeline2026Text }}</div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="text-xs text-slate-500 mt-5 italic border-t border-stone-200 pt-3 text-center"
+          >
+            {{ copy.timelineFooter }}
+          </div>
+        </div>
+      </div>
+
       <!-- Form -->
-      <div class="invitation-card shadow-xl overflow-hidden">
+      <div class="invitation-card shadow-xl overflow-hidden mt-6">
         <div
           class="flex items-start justify-between px-7 py-6"
           style="
@@ -349,101 +560,102 @@
         </div>
 
         <div class="p-5">
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label
+                class="text-xs text-slate-600 font-bold uppercase tracking-wide"
+                >{{ copy.nameLabel }}</label
+              >
+              <input
+                v-model="firstName"
+                class="mt-2 w-full input-elem outline-none"
+                placeholder="Ej: Juan / John"
+              />
+            </div>
+            <div>
+              <label
+                class="text-xs text-slate-600 font-bold uppercase tracking-wide"
+                >{{ copy.lastLabel }}</label
+              >
+              <input
+                v-model="lastName"
+                class="mt-2 w-full input-elem outline-none"
+                placeholder="Ej: Pérez / Smith"
+              />
+            </div>
+          </div>
 
-        <div class="grid md:grid-cols-2 gap-4">
-          <div>
+          <div class="mt-4">
             <label
               class="text-xs text-slate-600 font-bold uppercase tracking-wide"
-              >{{ copy.nameLabel }}</label
+              >Email</label
             >
             <input
-              v-model="firstName"
+              v-model="email"
+              type="email"
               class="mt-2 w-full input-elem outline-none"
-              placeholder="Ej: Juan / John"
+              placeholder="tu@email.com"
             />
           </div>
-          <div>
+
+          <div class="mt-4">
             <label
               class="text-xs text-slate-600 font-bold uppercase tracking-wide"
-              >{{ copy.lastLabel }}</label
+              >{{ copy.attLabel }}</label
             >
-            <input
-              v-model="lastName"
-              class="mt-2 w-full input-elem outline-none"
-              placeholder="Ej: Pérez / Smith"
-            />
+            <select v-model="attendance" class="mt-2 w-full input-elem">
+              <option value="" disabled>Selecciona una opción...</option>
+              <option value="both">
+                ✅ Asisto a ambos tramos (civil + post)
+              </option>
+              <option value="civil">✅ Solo Registro Civil</option>
+              <option value="post">✅ Solo Post Registro Civil</option>
+              <option value="no">
+                ❌ No puedo asistir (apoyo moral a distancia)
+              </option>
+            </select>
+            <div class="text-xs text-slate-500 mt-2 italic">
+              {{ copy.attHint }}
+            </div>
+            <div v-if="err" class="text-sm text-rose-600 mt-2 font-bold">
+              {{ copy.err }}
+            </div>
           </div>
-        </div>
 
-        <div class="mt-4">
-          <label
-            class="text-xs text-slate-600 font-bold uppercase tracking-wide"
-            >Email</label
-          >
-          <input
-            v-model="email"
-            type="email"
-            class="mt-2 w-full input-elem outline-none"
-            placeholder="tu@email.com"
-          />
-        </div>
-
-        <div class="mt-4">
-          <label
-            class="text-xs text-slate-600 font-bold uppercase tracking-wide"
-            >{{ copy.attLabel }}</label
-          >
-          <select v-model="attendance" class="mt-2 w-full input-elem">
-            <option value="" disabled>Selecciona una opción...</option>
-            <option value="both">
-              ✅ Asisto a ambos tramos (civil + post)
-            </option>
-            <option value="civil">✅ Solo Registro Civil</option>
-            <option value="post">✅ Solo Post Registro Civil</option>
-            <option value="no">
-              ❌ No puedo asistir (apoyo moral a distancia)
-            </option>
-          </select>
-          <div class="text-xs text-slate-500 mt-2 italic">
-            {{ copy.attHint }}
+          <div class="mt-5 flex flex-wrap gap-3">
+            <button @click="issue" class="btn-primary">
+              🛂 {{ copy.issueBtn }}
+            </button>
+            <button @click="deny" class="btn-ghost">
+              🚫 {{ copy.denyBtn }}
+            </button>
           </div>
-          <div v-if="err" class="text-sm text-rose-600 mt-2 font-bold">
-            {{ copy.err }}
-          </div>
-        </div>
 
-        <div class="mt-5 flex flex-wrap gap-3">
-          <button @click="issue" class="btn-primary">
-            🛂 {{ copy.issueBtn }}
-          </button>
-          <button @click="deny" class="btn-ghost">🚫 {{ copy.denyBtn }}</button>
-        </div>
-
-        <div
-          class="mt-5 bg-gradient-to-br from-stone-50 to-amber-50 border border-dashed border-stone-400 rounded-2xl p-5 relative"
-        >
-          <div class="flex items-center justify-between mb-3">
-            <b class="font-mono text-slate-900 text-sm font-extrabold">{{
-              copy.permitTitle
-            }}</b>
-            <span class="text-xs text-slate-600 font-mono"
-              >CODE: ENTRY-RC-PAU-DAK</span
-            >
-          </div>
-          <pre class="font-mono text-sm text-slate-700 whitespace-pre-wrap">{{
-            mrz
-          }}</pre>
           <div
-            :class="[
-              'absolute right-4 top-14 px-3 py-2 rounded-xl font-mono text-xs border',
-              stampShown
-                ? 'stamp-mark show stamp-large border-emerald-300 text-emerald-300 bg-black/40'
-                : 'stamp-mark stamp-large border-emerald-300 text-emerald-300 bg-black/20',
-            ]"
+            class="mt-5 bg-gradient-to-br from-stone-50 to-amber-50 border border-dashed border-stone-400 rounded-2xl p-5 relative"
           >
-            {{ copy.stamp }}
+            <div class="flex items-center justify-between mb-3">
+              <b class="font-mono text-slate-900 text-sm font-extrabold">{{
+                copy.permitTitle
+              }}</b>
+              <span class="text-xs text-slate-600 font-mono"
+                >CODE: ENTRY-RC-PAU-DAK</span
+              >
+            </div>
+            <pre class="font-mono text-sm text-slate-700 whitespace-pre-wrap">{{
+              mrz
+            }}</pre>
+            <div
+              :class="[
+                'absolute right-4 top-14 px-3 py-2 rounded-xl font-mono text-xs border',
+                stampShown
+                  ? 'stamp-mark show stamp-large border-emerald-300 text-emerald-300 bg-black/40'
+                  : 'stamp-mark stamp-large border-emerald-300 text-emerald-300 bg-black/20',
+              ]"
+            >
+              {{ copy.stamp }}
+            </div>
           </div>
-        </div>
         </div>
       </div>
       <footer class="mt-8 text-center text-sm text-slate-600 font-medium">
@@ -495,6 +707,22 @@ const COPY = {
     docDesc:
       "Complete su identidad para obtener el permiso de entrada con sello oficial",
     coupleTitle: "Dossier de las partes",
+    timelineTitle:
+      "Historial de tránsito — Archivo central de una historia compartida",
+    timelineDesc:
+      "Secuencia fotográfica del momento en que el tiempo entendió que debía contarse en plural",
+    timeline2022Title: "Primer Contacto",
+    timeline2022Text: "Protocolo de acercamiento activado",
+    timeline2023Title: "Tránsito Frecuente",
+    timeline2023Text: "Cruces recurrentes registrados",
+    timeline2024Title: "Encuentros reiterados",
+    timeline2024Text: "Intersecciones sucesivas oficialmente registradas",
+    timeline2025Title: "Preparativos Avanzados",
+    timeline2025Text: "Anillo confirmado, rumbo compartido",
+    timeline2026Title: "Legalización Final",
+    timeline2026Text: "Acta civil autorizada y destino conjunto en ejecución",
+    timelineFooter:
+      "Evidencia clasificada. Acceso reservado para testigos del destino",
     brideLabel: "Novia / Applicant A",
     groomLabel: "Novio / Applicant B",
     brideNat: "Nacionalidad: Argentina",
@@ -549,6 +777,21 @@ const COPY = {
     docDesc:
       "Provide your identity to receive the entry permit with an official stamp",
     coupleTitle: "Applicant dossier",
+    timelineTitle: "Transit history — Central archive of a shared story",
+    timelineDesc:
+      "Photographic sequence of the moment when time understood it should be counted in plural",
+    timeline2022Title: "First Contact",
+    timeline2022Text: "Approach protocol activated",
+    timeline2023Title: "Frequent Transit",
+    timeline2023Text: "Recurring crossings registered",
+    timeline2024Title: "Repeated Encounters",
+    timeline2024Text: "Successive intersections officially recorded",
+    timeline2025Title: "Advanced Preparations",
+    timeline2025Text: "Ring confirmed, shared route",
+    timeline2026Title: "Final Legalization",
+    timeline2026Text: "Civil act authorized and joint destination in execution",
+    timelineFooter:
+      "Classified evidence. Access reserved for witnesses of destiny",
     brideLabel: "Bride / Applicant A",
     groomLabel: "Groom / Applicant B",
     brideNat: "Nationality: Argentinian",
@@ -560,7 +803,8 @@ const COPY = {
     itHint:
       "Note: Partial participation (only 1 checkpoint) or full participation (both checkpoints) is allowed. Your presence will be duly celebrated",
     formTitle: "Entry data — Participant",
-    formDesc: "Complete the required details to validate your entry to the event",
+    formDesc:
+      "Complete the required details to validate your entry to the event",
     nameLabel: "First name",
     lastLabel: "Last name",
     attLabel: "Entry declaration (attendance)",
@@ -967,6 +1211,194 @@ watch([firstName, lastName, attendance, lang], () => {});
     width: 90px;
     bottom: -10px;
     right: -15px;
+  }
+}
+
+/* Timeline Styles */
+.timeline-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.timeline-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #1e293b, #334155);
+  border: 3px solid #cbd5e1;
+  border-radius: 50%;
+  font-family: "Courier New", monospace;
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 4px 12px rgba(30, 41, 59, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-badge::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.timeline-item:not(:last-child) .timeline-badge::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 3px;
+  height: 80px;
+  background: linear-gradient(to bottom, #cbd5e1, #e2e8f0);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.timeline-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(251, 247, 242, 0.95)
+  );
+  border: 2px solid #d6d3d1;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow:
+    0 4px 16px rgba(45, 52, 70, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  position: relative;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 8px 24px rgba(45, 52, 70, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.timeline-stamp {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-family: "Courier New", monospace;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #b91c1c;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.35rem 0.6rem;
+  background: rgba(254, 242, 242, 0.9);
+  border: 1.5px dashed #dc2626;
+  border-radius: 0.35rem;
+  transform: rotate(3deg);
+  box-shadow: 0 2px 6px rgba(185, 28, 28, 0.15);
+}
+
+.timeline-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.timeline-photo-box {
+  width: 100%;
+  padding: 0.4rem;
+  background: linear-gradient(145deg, #a8a29e, #d6d3d1);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(68, 64, 60, 0.12);
+}
+
+.timeline-photo {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 0.35rem;
+  border: 3px solid #fef3c7;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.timeline-note {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #475569;
+  font-style: italic;
+  text-align: center;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(203, 213, 225, 0.5);
+}
+
+/* Responsive Timeline */
+@media (max-width: 768px) {
+  .timeline-item {
+    grid-template-columns: 60px 1fr;
+    gap: 1rem;
+  }
+
+  .timeline-badge {
+    width: 60px;
+    height: 60px;
+    font-size: 0.9rem;
+  }
+
+  .timeline-item:not(:last-child) .timeline-badge::after {
+    height: 60px;
+  }
+
+  .timeline-card {
+    padding: 1rem;
+  }
+
+  .timeline-stamp {
+    font-size: 0.6rem;
+    padding: 0.25rem 0.5rem;
+    top: 8px;
+    right: 8px;
+  }
+
+  .timeline-photos-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .timeline-photo-box {
+    max-width: 100%;
+  }
+
+  .timeline-photo {
+    height: 140px;
+  }
+
+  .timeline-note {
+    font-size: 0.8rem;
   }
 }
 </style>
