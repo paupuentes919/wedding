@@ -922,11 +922,11 @@ async function issue() {
     if (sentEmail) {
       showToast(
         lang.value === "es"
-          ? "✅ Datos guardados y email enviado."
-          : "✅ Data saved and email sent.",
+          ? "✅ Datos guardados y email enviado"
+          : "✅ Data saved and email sent",
       );
     } else {
-      showToast(lang.value === "es" ? "✅ Datos guardados." : "✅ Data saved.");
+      showToast(lang.value === "es" ? "✅ Datos guardados" : "✅ Data saved");
     }
     // Limpiar formulario pero mantener approved = true
     setTimeout(() => {
