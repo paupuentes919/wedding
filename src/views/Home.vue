@@ -589,12 +589,6 @@
             </div>
           </div>
 
-          <div class="mt-5 flex flex-wrap gap-3">
-            <button @click="issue" class="btn-primary">
-              🛂 {{ copy.issueBtn }}
-            </button>
-          </div>
-
           <div
             class="mt-5 bg-gradient-to-br from-stone-50 to-amber-50 border border-dashed border-stone-400 rounded-2xl p-5 relative"
           >
@@ -619,6 +613,12 @@
             >
               {{ copy.stamp }}
             </div>
+          </div>
+
+          <div class="mt-5 flex flex-wrap gap-3">
+            <button @click="issue" class="btn-primary">
+              🛂 {{ copy.issueBtn }}
+            </button>
           </div>
         </div>
       </div>
@@ -666,7 +666,7 @@ const COPY = {
     statusApproved: "Entrada autorizada",
     statusDenied: "Ingreso denegado",
     h1: "Autorización de entrada",
-    h2: "Registro Civil + Evento de celebración",
+    h2: "Evento de celebración",
     docTitle: "Formulario de ingreso",
     docDesc:
       "Complete su identidad para obtener el permiso de entrada con sello oficial",
@@ -733,7 +733,7 @@ const COPY = {
     statusApproved: "Entry authorized",
     statusDenied: "Entry denied",
     h1: "Entry clearance",
-    h2: "Civil Registry + Celebration Event",
+    h2: "Celebration Event",
     docTitle: "Entry Form",
     docDesc:
       "Provide your identity to receive the entry permit with an official stamp",
