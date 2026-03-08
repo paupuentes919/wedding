@@ -251,33 +251,6 @@
                     >
                   </div>
                 </div>
-
-                <div
-                  class="p-4 rounded-lg bg-gradient-to-br from-stone-50 to-amber-50 border border-stone-400/60"
-                >
-                  <div
-                    class="inline-flex items-center gap-2 text-xs font-mono mb-3"
-                  >
-                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                    <span class="text-slate-900 font-extrabold uppercase">{{
-                      copy.stop2Badge
-                    }}</span>
-                  </div>
-                  <div class="font-bold text-slate-900 text-base">
-                    {{ config.post_place }}
-                  </div>
-                  <div class="text-sm text-slate-600 mt-2">
-                    📅 {{ config.post_date }} · 🕐 {{ config.post_time }}
-                  </div>
-                  <div class="mt-3">
-                    <a
-                      :href="config.post_maps"
-                      target="_blank"
-                      class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-stone-400 text-sm text-slate-900 font-bold hover:shadow-md transition"
-                      >🗺️ Maps</a
-                    >
-                  </div>
-                </div>
               </div>
               <div
                 class="text-xs text-slate-500 mt-4 italic border-t border-stone-200 pt-3"
@@ -604,12 +577,8 @@
               >{{ copy.attLabel }}</label
             >
             <select v-model="attendance" class="mt-2 w-full input-elem">
-              <option value="" disabled>Selecciona una opción...</option>
-              <option value="both">
-                ✅ Asisto a ambos tramos (civil + post)
-              </option>
-              <option value="civil">✅ Solo Registro Civil</option>
-              <option value="post">✅ Solo Post Registro Civil</option>
+              <option value="" disabled>Selecciona una opción</option>
+              <option value="ceremony">✅ Asisto a la ceremonia</option>
               <option value="no">
                 ❌ No puedo asistir (apoyo moral a distancia)
               </option>
@@ -625,9 +594,6 @@
           <div class="mt-5 flex flex-wrap gap-3">
             <button @click="issue" class="btn-primary">
               🛂 {{ copy.issueBtn }}
-            </button>
-            <button @click="deny" class="btn-ghost">
-              🚫 {{ copy.denyBtn }}
             </button>
           </div>
 
@@ -683,10 +649,10 @@ import dakotaform from "../assets/dakotaform.png";
 emailjs.init("unNeA4QjggAdXcuek");
 
 const config = {
-  civil_place: "Registro Civil — [DIRECCIÓN]",
-  civil_date: "[FECHA CIVIL]",
-  civil_time: "[HORA CIVIL]",
-  civil_maps: "https://maps.google.com/?q=[DIRECCIÓN CIVIL]",
+  civil_place: "Yacht Club Puerto Madero — Victoria Ocampo 100",
+  civil_date: "2026-05-15",
+  civil_time: "13hs",
+  civil_maps: "https://maps.app.goo.gl/wbZvkKS5EvJAT1FH6",
   post_place: "Post — [DIRECCIÓN / LUGAR]",
   post_date: "[FECHA POST]",
   post_time: "[HORA POST]",
@@ -703,7 +669,7 @@ const COPY = {
     statusDenied: "Ingreso denegado",
     h1: "Autorización de entrada",
     h2: "Registro Civil + Evento de celebración",
-    docTitle: "Formulario de ingreso — Civil Edition",
+    docTitle: "Formulario de ingreso",
     docDesc:
       "Complete su identidad para obtener el permiso de entrada con sello oficial",
     coupleTitle: "Dossier de las partes",
@@ -728,24 +694,19 @@ const COPY = {
     brideNat: "Nacionalidad: Argentina",
     groomNat: "Nacionalidad: Estadounidense",
     coupleHint: "Observación: Conexión detectada. Intervención civil requerida",
-    itTitle: "Itinerario de ingreso (2 tramos)",
-    stop1Badge: "Puesto 1 — Registro Civil",
-    stop2Badge: "Puesto 2 — Post Registro Civil",
-    itHint:
-      "Nota: Participación parcial (solo 1 tramo) o total (ambos tramos) habilitada. Su compañía será debidamente celebrada",
+    itTitle: "Itinerario de ingreso",
+    stop1Badge: "Puesto — Ceremonia",
+    itHint: "Su compañía será debidamente celebrada",
     formTitle: "Datos de ingreso — Participante",
     formDesc: "Complete los datos requeridos para validar su entrada al evento",
     issueBtn: "🛂 Emitir permiso de entrada",
     waBtn: "✅ Confirmar por WhatsApp",
-    denyBtn: "🚫 Denegar ingreso",
-    formHint: "Humor inteligente promise: “Denegar ingreso” no funciona.",
-    permitTitle: "PERMISO DE ENTRADA — CIVIL & POST",
+    permitTitle: "PERMISO DE ENTRADA — CEREMONIA",
     stamp: "APROBADO ✅\nENTRADA AUTORIZADA\nSIN REEMBOLSO",
     err: "Complete nombre y apellido para emitir el permiso.",
     faqTitle: "FAQ",
-    f1: "<b>¿Tengo que ir a los dos tramos?</b> No. Asistencia opcional a uno o ambos tramos. Vos elegís",
-    f2: "<b>¿Cómo debo ir vestido?</b> Elegante sport",
-    f3: "<b>PARKING</b>",
+    f1: "<b>¿Cómo debo ir vestido?</b> - Elegante",
+    f2: "<b>¿El Yacht Club incluye estacionamiento?</b> - No, no hay estacionamiento en el Yacht Club, pero el más cercano está en Victoria Ocampo 355",
     giftTitle: "Contribucion simbolica",
     giftP1:
       "De acuerdo con la normativa vigente, su presencia ha sido previamente clasificada como aporte suficiente y de alto valor afectivo",
@@ -757,9 +718,7 @@ const COPY = {
     foot: "Hecho con amor, burocracia falsa y un trámite real. ✨",
     entryIntent: (v) =>
       ({
-        both: "ASISTO A CIVIL + POST",
-        civil: "ASISTO SOLO A CIVIL",
-        post: "ASISTO SOLO A POST",
+        ceremony: "ASISTO A LA CEREMONIA",
         no: "NO PUEDO ASISTIR (APOYO MORAL)",
       })[v] || "—",
     waMessage: (fn, ln, att) =>
@@ -773,7 +732,7 @@ const COPY = {
     statusDenied: "Entry denied",
     h1: "Entry clearance",
     h2: "Civil Registry + Celebration Event",
-    docTitle: "Entry Form — Civil Edition",
+    docTitle: "Entry Form",
     docDesc:
       "Provide your identity to receive the entry permit with an official stamp",
     coupleTitle: "Applicant dossier",
@@ -797,11 +756,9 @@ const COPY = {
     brideNat: "Nationality: Argentinian",
     groomNat: "Nationality: American",
     coupleHint: "Observation: Connection detected. Civil intervention required",
-    itTitle: "Entry route (2 checkpoints)",
-    stop1Badge: "Checkpoint 1 — Civil Registry",
-    stop2Badge: "Checkpoint 2 — After Civil Registry",
-    itHint:
-      "Note: Partial participation (only 1 checkpoint) or full participation (both checkpoints) is allowed. Your presence will be duly celebrated",
+    itTitle: "Entry route",
+    stop1Badge: "Checkpoint — Ceremony",
+    itHint: "Your presence will be duly celebrated",
     formTitle: "Entry data — Participant",
     formDesc:
       "Complete the required details to validate your entry to the event",
@@ -813,7 +770,7 @@ const COPY = {
     waBtn: "✅ Confirm via WhatsApp",
     denyBtn: "🚫 Deny entry",
     formHint: "Smart humor promise: “Deny entry” doesn’t work.",
-    permitTitle: "ENTRY PERMIT — CIVIL & AFTER",
+    permitTitle: "ENTRY PERMIT — CEREMONY",
     stamp: "APPROVED ✅\nENTRY AUTHORIZED\nNO REFUNDS",
     err: "Please enter first and last name to issue the permit.",
     sideTitle: "Border rules (chill)",
@@ -823,9 +780,8 @@ const COPY = {
     r4: "<b>Neutral zone:</b> mate vs coffee / asado vs barbecue.",
     sideNote: "Final resolution: we consume both. (Diplomacy + hunger.)",
     faqTitle: "FAQ",
-    f1: "<b>Do I have to attend both segments?</b> No. Optional attendance for one or both segments. Your choice",
-    f2: "<b>How should I dress?</b> Elegant casual",
-    f3: "<b>PARKING</b>",
+    f1: "<b>How should I dress?</b> - Elegant",
+    f2: "<b>Does the Yacht Club include parking?</b> - No, but closest parking lots are at Victoria Ocampo 355",
     giftTitle: "Symbolic contribution",
     giftP1:
       "Per current regulations, your presence has already been classified as a sufficient contribution of high affective value.",
@@ -837,9 +793,7 @@ const COPY = {
     foot: "Made with love, fake bureaucracy, and a real legal step. ✨",
     entryIntent: (v) =>
       ({
-        both: "ATTENDING CIVIL + AFTER",
-        civil: "ATTENDING CIVIL ONLY",
-        post: "ATTENDING AFTER ONLY",
+        ceremony: "I ATTEND THE CEREMONY",
         no: "NOT ATTENDING (MORAL SUPPORT)",
       })[v] || "—",
     waMessage: (fn, ln, att) =>
@@ -873,7 +827,7 @@ const mrz = computed(() => {
   const fn = (firstName.value || "").trim();
   const ln = (lastName.value || "").trim();
   const intent = copy.value.entryIntent(attendance.value);
-  return `VISITOR: ${fn && ln ? fn + " " + ln : "——"}\nENTRY INTENT: ${intent}\nROUTE:\n  1) CIVIL — ${config.civil_place} — ${config.civil_date} ${config.civil_time}\n  2) AFTER — ${config.post_place} — ${config.post_date} ${config.post_time}\nSTATUS: ${stampShown.value ? "STAMPED / SEALED" : "PENDING STAMP"}`;
+  return `VISITOR: ${fn && ln ? fn + " " + ln : "——"}\nENTRY INTENT: ${intent}\nCEREMONY ROUTE: — ${config.civil_place} — ${config.civil_date} ${config.civil_time}\nSTATUS: ${stampShown.value ? "STAMPED / SEALED" : "PENDING STAMP"}`;
 });
 
 // WhatsApp code removed - keeping EmailJS only (optional)
