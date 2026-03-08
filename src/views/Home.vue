@@ -624,6 +624,9 @@
       </div>
       <footer class="mt-8 text-center text-sm text-slate-600 font-medium">
         {{ copy.foot }}
+        <br />
+        {{ copy.foot2 }}
+        <br />
       </footer>
     </div>
 
@@ -717,7 +720,8 @@ const COPY = {
     giftCbu: "CBU: 00701583-30004038295770",
     giftHolder: "Titular: Paula Puentes",
     giftAlias: "Alias: pau.dakota.boda",
-    foot: "Hecho con amor, burocracia falsa y un trámite real. ✨",
+    foot: "Hecho con amor, burocracia falsa y muchos trámites reales ✨",
+    foot2: "Cualquier similitud con la realidad es pura coincidencia 😂",
     entryIntent: (v) =>
       ({
         yes: "ASISTO A LA CEREMONIA",
@@ -796,7 +800,8 @@ const COPY = {
     giftCbu: "CBU: 00701583-30004038295770",
     giftHolder: "Account holder: Paula Puentes",
     giftAlias: "Alias: pau.dakota.boda",
-    foot: "Made with love, fake bureaucracy, and a real legal step. ✨",
+    foot: "Made with love, fake bureaucracy, and many real legal steps ✨",
+    foot2: "Any resemblance to reality is purely coincidental 😂",
     entryIntent: (v) =>
       ({
         yes: "I ATTEND THE CEREMONY",
