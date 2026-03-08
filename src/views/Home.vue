@@ -577,11 +577,9 @@
               >{{ copy.attLabel }}</label
             >
             <select v-model="attendance" class="mt-2 w-full input-elem">
-              <option value="" disabled>Selecciona una opción</option>
-              <option value="ceremony">✅ Asisto a la ceremonia</option>
-              <option value="no">
-                ❌ No puedo asistir (apoyo moral a distancia)
-              </option>
+              <option value="" disabled>{{ copy.attSelectOption }}</option>
+              <option value="yes">✅ {{ copy.attCeremony }}</option>
+              <option value="no">❌ {{ copy.attNo }}</option>
             </select>
             <div class="text-xs text-slate-500 mt-2 italic">
               {{ copy.attHint }}
@@ -699,6 +697,9 @@ const COPY = {
     itHint: "Su compañía será debidamente celebrada",
     formTitle: "Datos de ingreso — Participante",
     formDesc: "Complete los datos requeridos para validar su entrada al evento",
+    attSelectOption: "Selecciona una opción",
+    attCeremony: "Asisto a la ceremonia",
+    attNo: "No puedo asistir (apoyo moral a distancia)",
     issueBtn: "🛂 Emitir permiso de entrada",
     waBtn: "✅ Confirmar por WhatsApp",
     permitTitle: "PERMISO DE ENTRADA — CEREMONIA",
@@ -706,7 +707,8 @@ const COPY = {
     err: "Complete nombre y apellido para emitir el permiso.",
     faqTitle: "FAQ",
     f1: "<b>¿Cómo debo ir vestido?</b> - Elegante",
-    f2: "<b>¿El Yacht Club incluye estacionamiento?</b> - No, no hay estacionamiento en el Yacht Club, pero el más cercano está en Victoria Ocampo 355",
+    f2: "<b>¿Cuál es la duración del evento?</b> - El evento durarará aproximadamente 8 horas",
+    f3: "<b>¿El Yacht Club incluye estacionamiento?</b> - No, no hay estacionamiento en el Yacht Club, pero el más cercano está en Victoria Ocampo 355",
     giftTitle: "Contribucion simbolica",
     giftP1:
       "De acuerdo con la normativa vigente, su presencia ha sido previamente clasificada como aporte suficiente y de alto valor afectivo",
@@ -718,7 +720,7 @@ const COPY = {
     foot: "Hecho con amor, burocracia falsa y un trámite real. ✨",
     entryIntent: (v) =>
       ({
-        ceremony: "ASISTO A LA CEREMONIA",
+        yes: "ASISTO A LA CEREMONIA",
         no: "NO PUEDO ASISTIR (APOYO MORAL)",
       })[v] || "—",
     waMessage: (fn, ln, att) =>
@@ -762,6 +764,9 @@ const COPY = {
     formTitle: "Entry data — Participant",
     formDesc:
       "Complete the required details to validate your entry to the event",
+    attSelectOption: "Select an option",
+    attCeremony: "I attend the ceremony",
+    attNo: "I can't attend (moral support from afar)",
     nameLabel: "First name",
     lastLabel: "Last name",
     attLabel: "Entry declaration (attendance)",
@@ -781,7 +786,8 @@ const COPY = {
     sideNote: "Final resolution: we consume both. (Diplomacy + hunger.)",
     faqTitle: "FAQ",
     f1: "<b>How should I dress?</b> - Elegant",
-    f2: "<b>Does the Yacht Club include parking?</b> - No, but closest parking lots are at Victoria Ocampo 355",
+    f2: "<b>How long will the ceremony last?</b> - The event will last approximately 8 hours",
+    f3: "<b>Does the Yacht Club include parking?</b> - No, but closest parking lots are at Victoria Ocampo 355",
     giftTitle: "Symbolic contribution",
     giftP1:
       "Per current regulations, your presence has already been classified as a sufficient contribution of high affective value.",
@@ -793,7 +799,7 @@ const COPY = {
     foot: "Made with love, fake bureaucracy, and a real legal step. ✨",
     entryIntent: (v) =>
       ({
-        ceremony: "I ATTEND THE CEREMONY",
+        yes: "I ATTEND THE CEREMONY",
         no: "NOT ATTENDING (MORAL SUPPORT)",
       })[v] || "—",
     waMessage: (fn, ln, att) =>
@@ -884,10 +890,7 @@ async function issue() {
       to_name: firstName.value,
       guest_name: `${firstName.value} ${lastName.value}`,
       attendance_text: copy.value.entryIntent(attendance.value),
-      subject:
-        lang.value === "es"
-          ? "✅ Datos guardados - Invitación Civil"
-          : "✅ Data saved - Civil Invitation",
+      subject: lang.value === "es" ? "✅ Datos guardados" : "✅ Data saved",
       reply_to: email.value,
       from_name: "Paula & Dakota",
     };
@@ -966,7 +969,7 @@ const statusPill = computed(() => {
     dotClass = "no-dot";
     textClass = "status-warn"; // o puedes crear una clase status-no
     text = copy.value.statusDenied;
-  } else if (["both", "civil", "post"].includes(attendance.value)) {
+  } else if (["yes"].includes(attendance.value)) {
     // Entrada autorizada
     dotClass = "seal-dot";
     textClass = "status-ok";
@@ -1218,7 +1221,7 @@ watch([firstName, lastName, attendance, lang], () => {});
   transform: translate(-50%, -50%);
 }
 
-.timeline-item:not(:last-child) .timeline-badge::after {
+.timeline-item .timeline-badge::after {
   content: "";
   position: absolute;
   top: 100%;
@@ -1323,7 +1326,7 @@ watch([firstName, lastName, attendance, lang], () => {});
     font-size: 0.9rem;
   }
 
-  .timeline-item:not(:last-child) .timeline-badge::after {
+  .timeline-item .timeline-badge::after {
     height: 60px;
   }
 
