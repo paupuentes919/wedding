@@ -1396,13 +1396,15 @@ watch([firstName, lastName, attendance, lang], () => {});
 
 .timeline-photos-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 280px));
+  justify-content: center;
   gap: 0.75rem;
   margin-bottom: 1rem;
 }
 
 .timeline-photo-box {
   width: 100%;
+  max-width: 280px;
   padding: 0.4rem;
   background: linear-gradient(145deg, #a8a29e, #d6d3d1);
   border-radius: 0.5rem;
