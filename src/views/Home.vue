@@ -150,7 +150,7 @@
             <div
               class="font-mono text-xs bg-white border border-stone-400 rounded-full px-4 py-1.5 text-slate-900 font-bold tracking-wider"
             >
-              ID I-RC-2026
+              I-RC-2026
             </div>
           </div>
 
@@ -528,7 +528,7 @@
           <div
             class="font-mono text-xs bg-white border border-stone-400 rounded-full px-4 py-1.5 text-slate-900 font-bold tracking-wider"
           >
-            ID P-RC-2026
+            I-EV-2026
           </div>
         </div>
 
@@ -597,7 +597,7 @@
                 copy.permitTitle
               }}</b>
               <span class="text-xs text-slate-600 font-mono"
-                >CODE: ENTRY-RC-PAU-DAK</span
+                >CODE: ENTRY-EV-PAU-DAK</span
               >
             </div>
             <pre class="font-mono text-sm text-slate-700 whitespace-pre-wrap">{{
