@@ -47,9 +47,7 @@
         <TopBar :copy="copy" :statusPill="statusPill" />
 
         <header class="mb-8">
-          <h1
-            class="heading-large font-montserrat text-center mb-3 mt-6"
-          >
+          <h1 class="heading-large font-montserrat text-center mb-3 mt-6">
             {{ copy.h1 }}
           </h1>
           <h2 class="heading-large-lower font-montserrat text-center">
@@ -156,7 +154,9 @@
 
           <div class="p-4 sm:p-5">
             <!-- Couple -->
-            <div class="bg-white/60 rounded-2xl p-4 sm:p-5 border border-stone-300 mb-5 shadow-sm">
+            <div
+              class="bg-white/60 rounded-2xl p-4 sm:p-5 border border-stone-300 mb-5 shadow-sm"
+            >
               <h3
                 class="text-xs font-mono uppercase mb-3 text-slate-900 font-extrabold tracking-widest"
               >
@@ -214,7 +214,9 @@
             </div>
 
             <!-- Itinerary -->
-            <div class="bg-white/60 rounded-2xl p-4 sm:p-5 border border-stone-300 mb-5 shadow-sm">
+            <div
+              class="bg-white/60 rounded-2xl p-4 sm:p-5 border border-stone-300 mb-5 shadow-sm"
+            >
               <h3
                 class="text-xs font-mono uppercase text-slate-900 font-extrabold tracking-widest"
               >
@@ -256,7 +258,9 @@
             </div>
 
             <!-- FAQ -->
-            <div class="bg-white/60 border border-stone-300 rounded-2xl p-4 sm:p-5 shadow-sm mb-5">
+            <div
+              class="bg-white/60 border border-stone-300 rounded-2xl p-4 sm:p-5 shadow-sm mb-5"
+            >
               <h3
                 class="text-xs font-mono uppercase text-slate-900 font-extrabold tracking-widest"
               >
@@ -583,7 +587,9 @@
             </div>
           </div>
 
-          <div class="mt-5 bg-gradient-to-br from-stone-50 to-amber-50 border border-dashed border-stone-400 rounded-2xl p-4 sm:p-5 relative">
+          <div
+            class="mt-5 bg-gradient-to-br from-stone-50 to-amber-50 border border-dashed border-stone-400 rounded-2xl p-4 sm:p-5 relative"
+          >
             <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
               <b class="font-mono text-slate-900 text-sm font-extrabold">{{
                 copy.permitTitle
@@ -605,14 +611,20 @@
             </div>
           </div>
 
-          <div class="mt-5 flex flex-wrap gap-3">
+          <div class="mt-5 text-sm text-slate-700 italic">
+            {{ copy.lastText }}
+          </div>
+
+          <div class="mt-3 flex flex-wrap gap-3">
             <button @click="issue" class="btn-primary w-full sm:w-auto">
               🛂 {{ copy.issueBtn }}
             </button>
           </div>
         </div>
       </div>
-      <footer class="mt-8 text-center text-xs sm:text-sm text-slate-600 font-medium">
+      <footer
+        class="mt-8 text-center text-xs sm:text-sm text-slate-600 font-medium"
+      >
         {{ copy.foot }}
         <br />
         {{ copy.foot2 }}
@@ -696,6 +708,8 @@ const COPY = {
     issueBtn: "🛂 Emitir permiso de entrada",
     waBtn: "✅ Confirmar por WhatsApp",
     permitTitle: "VERIFICACIÓN DE DATOS COMPLETADOS",
+    lastText:
+      "Si completaste que vas a asistir, te llegará un email de confirmación a la casilla proporcionada",
     stamp: "APROBADO ✅\nENTRADA AUTORIZADA\nSIN REEMBOLSO",
     err: "Complete nombre y apellido para emitir el permiso.",
     faqTitle: "FAQ",
@@ -770,6 +784,8 @@ const COPY = {
     denyBtn: "🚫 Deny entry",
     formHint: "Smart humor promise: “Deny entry” doesn’t work.",
     permitTitle: "VERIFICATION OF COMPLETED DATA",
+    lastText:
+      "If you completed that you will attend, you will receive a confirmation email at the provided address",
     stamp: "APPROVED ✅\nENTRY AUTHORIZED\nNO REFUNDS",
     err: "Please enter first and last name to issue the permit.",
     sideTitle: "Border rules (chill)",
@@ -876,58 +892,66 @@ async function issue() {
     return;
   }
 
-  // Guardar en Supabase (email optional)
-  const result = await saveGuest(
-    firstName.value,
-    lastName.value,
-    email.value,
-    attendance.value,
-  );
-
-  if (!result.success) {
-    console.error("Supabase insert error:", result.error);
-    showToast(
-      lang.value === "es"
-        ? `Error al guardar: ${result.error}`
-        : `Save error: ${result.error}`,
-    );
-    return;
-  }
-
-  // No phone handling — proceed
-
-  // Enviar confirmaciones opcionales
-  // 1) EmailJS sólo si el usuario dejó email
-  let sentEmail = false;
-  if (attendance.value !== "no" && email.value && email.value.includes("@")) {
-    const templateParams = {
-      to_email: email.value,
-      to_name: firstName.value,
-      guest_name: `${firstName.value} ${lastName.value}`,
-      attendance_text: copy.value.entryIntent(attendance.value),
-      subject: lang.value === "es" ? "✅ Datos guardados" : "✅ Data saved",
-      reply_to: email.value,
-      from_name: "Paula & Dakota",
-    };
-
-    try {
-      const emailRes = await emailjs.send(
-        "service_wa6gnc2",
-        "template_zel8d9l",
-        templateParams,
-      );
-      console.log("EmailJS send result:", emailRes);
-      sentEmail = true;
-    } catch (error) {
-      console.error("Error al enviar email:", error);
-    }
-  }
-
-  // Animación de sello
+  // Mostrar sello INMEDIATAMENTE
   stampShown.value = false;
   setTimeout(() => {
     stampShown.value = true;
     approved.value = true;
+  }, 40);
+
+  // Guardar datos del formulario antes de limpiar
+  const guestFirstName = firstName.value;
+  const guestLastName = lastName.value;
+  const guestEmail = email.value;
+  const guestAttendance = attendance.value;
+
+  // Guardar en Supabase y enviar email en segundo plano (sin bloquear)
+  (async () => {
+    // Guardar en Supabase (email optional)
+    const result = await saveGuest(
+      guestFirstName,
+      guestLastName,
+      guestEmail,
+      guestAttendance,
+    );
+
+    if (!result.success) {
+      console.error("Supabase insert error:", result.error);
+      showToast(
+        lang.value === "es"
+          ? `Error al guardar: ${result.error}`
+          : `Save error: ${result.error}`,
+      );
+      return;
+    }
+
+    // Enviar confirmaciones opcionales
+    // 1) EmailJS sólo si el usuario dejó email
+    let sentEmail = false;
+    if (guestAttendance !== "no" && guestEmail && guestEmail.includes("@")) {
+      const templateParams = {
+        to_email: guestEmail,
+        to_name: guestFirstName,
+        guest_name: `${guestFirstName} ${guestLastName}`,
+        attendance_text: copy.value.entryIntent(guestAttendance),
+        subject: lang.value === "es" ? "✅ Datos guardados" : "✅ Data saved",
+        reply_to: guestEmail,
+        from_name: "Paula & Dakota",
+      };
+
+      try {
+        const emailRes = await emailjs.send(
+          "service_wa6gnc2",
+          "template_zel8d9l",
+          templateParams,
+        );
+        console.log("EmailJS send result:", emailRes);
+        sentEmail = true;
+      } catch (error) {
+        console.error("Error al enviar email:", error);
+      }
+    }
+
     // Mensaje según comunicaciones enviadas
     if (sentEmail) {
       showToast(
@@ -938,17 +962,17 @@ async function issue() {
     } else {
       showToast(lang.value === "es" ? "✅ Datos guardados" : "✅ Data saved");
     }
-    // Limpiar formulario pero mantener approved = true
-    setTimeout(() => {
-      firstName.value = "";
-      lastName.value = "";
-      email.value = "";
-      attendance.value = "";
-      stampShown.value = false;
-      // NO resetear approved.value - mantener "Entrada autorizada"
-      // refresh local list
-    }, 2000);
-  }, 40);
+  })();
+
+  // Limpiar formulario después del sello
+  setTimeout(() => {
+    firstName.value = "";
+    lastName.value = "";
+    email.value = "";
+    attendance.value = "";
+    stampShown.value = false;
+    // NO resetear approved.value - mantener "Entrada autorizada"
+  }, 2000);
 }
 
 function deny() {
