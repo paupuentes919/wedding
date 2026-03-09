@@ -606,12 +606,10 @@
             <div
               :class="[
                 'absolute right-4 top-14 px-3 py-2 rounded-xl font-mono text-xs border',
-                stampShown
-                  ? 'stamp-mark show stamp-large border-emerald-300 text-emerald-300 bg-black/40'
-                  : 'stamp-mark stamp-large border-emerald-300 text-emerald-300 bg-black/20',
+                stampVisualClass,
               ]"
             >
-              {{ copy.stamp }}
+              {{ permitStampText }}
             </div>
           </div>
 
@@ -841,6 +839,26 @@ const mrz = computed(() => {
   return `VISITOR: ${fn && ln ? fn + " " + ln : "——"}\nENTRY INTENT: ${intent}\nCEREMONY ROUTE: — ${config.civil_place} — ${config.civil_date} ${config.civil_time}\nSTATUS: ${stampShown.value ? "STAMPED / SEALED" : "PENDING STAMP"}`;
 });
 
+const permitStampText = computed(() => {
+  if (attendance.value === "no") {
+    return lang.value === "es"
+      ? "RECHAZADO ❌\nAPOYO MORAL A LA DISTANCIA"
+      : "DENIED ❌\nMORAL SUPPORT FROM AFAR";
+  }
+  return copy.value.stamp;
+});
+
+const stampVisualClass = computed(() => {
+  const toneClass =
+    attendance.value === "no"
+      ? "border-rose-300 text-rose-300"
+      : "border-emerald-300 text-emerald-300";
+  const stateClass = stampShown.value
+    ? "stamp-mark show stamp-large bg-black/40"
+    : "stamp-mark stamp-large bg-black/20";
+  return `${stateClass} ${toneClass}`;
+});
+
 // WhatsApp code removed - keeping EmailJS only (optional)
 
 function setLang(l) {
@@ -889,7 +907,11 @@ async function issue() {
   // Enviar confirmaciones opcionales
   // 1) EmailJS sólo si el usuario dejó email
   let sentEmail = false;
-  if (email.value && email.value.includes("@")) {
+  if (
+    attendance.value !== "no" &&
+    email.value &&
+    email.value.includes("@")
+  ) {
     const templateParams = {
       to_email: email.value,
       to_name: firstName.value,
