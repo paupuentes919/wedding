@@ -574,7 +574,7 @@
           <div class="mt-4">
             <label
               class="text-xs text-slate-600 font-bold uppercase tracking-wide"
-              >{{ copy.attLabel }}</label
+              >{{ copy.attLabel }} <span class="text-red-600">*</span></label
             >
             <select v-model="attendance" class="mt-2 w-full input-elem">
               <option value="" disabled>{{ copy.attSelectOption }}</option>
@@ -759,6 +759,8 @@ const COPY = {
     restrictionCeliac: "Celíaco",
     restrictionAllergyLabel: "Alergias",
     restrictionAllergyPlaceholder: "Contanos cuáles son tus alergias",
+    attLabel: "Asistencia",
+    attHint: "Por favor, confirma tu asistencia",
     issueBtn: "🛂 Emitir permiso de entrada",
     waBtn: "✅ Confirmar por WhatsApp",
     permitTitle: "VERIFICACIÓN DE DATOS COMPLETADOS",
@@ -838,7 +840,7 @@ const COPY = {
     restrictionAllergyPlaceholder: "Tell us your allergies",
     nameLabel: "First name",
     lastLabel: "Last name",
-    attLabel: "Entry declaration (attendance)",
+    attLabel: "Attendance",
     issueBtn: "🛂 Issue entry permit",
     waBtn: "✅ Confirm via WhatsApp",
     denyBtn: "🚫 Deny entry",
