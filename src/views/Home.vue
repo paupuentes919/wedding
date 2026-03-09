@@ -5,10 +5,10 @@
       :style="{ '--hero-bg': `url(${heroBg})` }"
     >
       <div class="max-w-7xl mx-auto mt-3">
-        <div class="flex justify-center sm:justify-end gap-2 mb-3">
+        <div class="flex flex-wrap justify-center sm:justify-end gap-2 mb-3">
           <button
             :class="[
-              'px-4 py-2.5 rounded-lg font-bold text-sm border transition-all',
+              'px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg font-bold text-xs sm:text-sm border transition-all',
               lang === 'es'
                 ? 'bg-gradient-to-br from-slate-900 to-slate-800 border-slate-950 text-white shadow-md'
                 : 'bg-white border-stone-300 text-slate-800 hover:bg-stone-50',
@@ -26,7 +26,7 @@
           </button>
           <button
             :class="[
-              'px-4 py-2.5 rounded-lg font-bold text-sm border transition-all',
+              'px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg font-bold text-xs sm:text-sm border transition-all',
               lang === 'en'
                 ? 'bg-gradient-to-br from-slate-900 to-slate-800 border-slate-950 text-white shadow-md'
                 : 'bg-white border-stone-300 text-slate-800 hover:bg-stone-50',
@@ -48,14 +48,14 @@
 
         <header class="mb-8">
           <h1
-            class="heading-large font-montserrat flex justify-center mb-3 mt-6"
+            class="heading-large font-montserrat text-center mb-3 mt-6"
           >
             {{ copy.h1 }}
           </h1>
-          <h2 class="heading-large-lower font-montserrat flex justify-center">
+          <h2 class="heading-large-lower font-montserrat text-center">
             {{ copy.h2 }}
           </h2>
-          <div class="mt-4 max-w-4xl flex items-center gap-3">
+          <div class="mt-4 max-w-4xl mx-auto flex items-center gap-3">
             <div
               class="flex-1 h-[2.5px] bg-gradient-to-r from-slate-800 to-transparent"
             ></div>
@@ -131,7 +131,7 @@
         <!-- MAIN -->
         <section class="invitation-card shadow-xl overflow-hidden">
           <div
-            class="flex items-start justify-between px-7 py-6"
+            class="flex flex-col sm:flex-row items-start sm:justify-between gap-3 px-4 sm:px-7 py-4 sm:py-6"
             style="
               background: linear-gradient(
                 180deg,
@@ -148,28 +148,26 @@
               <div class="text-sm text-slate-700 mt-1">{{ copy.docDesc }}</div>
             </div>
             <div
-              class="font-mono text-xs bg-white border border-stone-400 rounded-full px-4 py-1.5 text-slate-900 font-bold tracking-wider"
+              class="font-mono text-[11px] sm:text-xs bg-white border border-stone-400 rounded-full px-3 sm:px-4 py-1.5 text-slate-900 font-bold tracking-wider"
             >
               I-RC-2026
             </div>
           </div>
 
-          <div class="p-5">
+          <div class="p-4 sm:p-5">
             <!-- Couple -->
-            <div
-              class="bg-white/60 rounded-2xl p-5 border border-stone-300 mb-5 shadow-sm"
-            >
+            <div class="bg-white/60 rounded-2xl p-4 sm:p-5 border border-stone-300 mb-5 shadow-sm">
               <h3
                 class="text-xs font-mono uppercase mb-3 text-slate-900 font-extrabold tracking-widest"
               >
                 {{ copy.coupleTitle }}
               </h3>
-              <div class="flex gap-6 flex-wrap">
+              <div class="flex gap-4 sm:gap-6 flex-wrap">
                 <div class="flex-1 min-w-[160px] flex items-start gap-3">
                   <img
                     :src="paulaform"
                     alt="Paula"
-                    class="w-20 h-24 object-cover rounded-lg border border-stone-400 flex-shrink-0"
+                    class="w-16 h-20 sm:w-20 sm:h-24 object-cover rounded-lg border border-stone-400 flex-shrink-0"
                   />
                   <div>
                     <label
@@ -177,7 +175,7 @@
                       >{{ copy.brideLabel }}</label
                     >
                     <div
-                      class="font-bold text-slate-900 text-lg mt-1 font-playfair"
+                      class="font-bold text-slate-900 text-base sm:text-lg mt-1 font-playfair"
                     >
                       Paula Puentes
                     </div>
@@ -190,7 +188,7 @@
                   <img
                     :src="dakotaform"
                     alt="Dakota"
-                    class="w-20 h-24 object-cover rounded-lg border border-stone-400 flex-shrink-0"
+                    class="w-16 h-20 sm:w-20 sm:h-24 object-cover rounded-lg border border-stone-400 flex-shrink-0"
                   />
                   <div>
                     <label
@@ -198,7 +196,7 @@
                       >{{ copy.groomLabel }}</label
                     >
                     <div
-                      class="font-bold text-slate-900 text-lg mt-1 font-playfair"
+                      class="font-bold text-slate-900 text-base sm:text-lg mt-1 font-playfair"
                     >
                       Dakota Wendel
                     </div>
@@ -216,9 +214,7 @@
             </div>
 
             <!-- Itinerary -->
-            <div
-              class="bg-white/60 rounded-2xl p-5 border border-stone-300 mb-5 shadow-sm"
-            >
+            <div class="bg-white/60 rounded-2xl p-4 sm:p-5 border border-stone-300 mb-5 shadow-sm">
               <h3
                 class="text-xs font-mono uppercase text-slate-900 font-extrabold tracking-widest"
               >
@@ -246,7 +242,7 @@
                     <a
                       :href="config.civil_maps"
                       target="_blank"
-                      class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-stone-400 text-sm text-slate-900 font-bold hover:shadow-md transition"
+                      class="inline-flex w-full sm:w-auto justify-center items-center gap-2 px-3 py-2 rounded-lg bg-white border border-stone-400 text-sm text-slate-900 font-bold hover:shadow-md transition"
                       >🗺️ Maps</a
                     >
                   </div>
@@ -260,9 +256,7 @@
             </div>
 
             <!-- FAQ -->
-            <div
-              class="bg-white/60 border border-stone-300 rounded-2xl p-5 shadow-sm mb-5"
-            >
+            <div class="bg-white/60 border border-stone-300 rounded-2xl p-4 sm:p-5 shadow-sm mb-5">
               <h3
                 class="text-xs font-mono uppercase text-slate-900 font-extrabold tracking-widest"
               >
@@ -277,7 +271,7 @@
 
             <div
               v-if="lang === 'es'"
-              class="bg-white/60 border border-stone-300 rounded-2xl p-5 shadow-sm mb-5"
+              class="bg-white/60 border border-stone-300 rounded-2xl p-4 sm:p-5 shadow-sm mb-5"
             >
               <h3
                 class="text-xs font-mono uppercase text-slate-900 font-extrabold tracking-widest"
@@ -299,7 +293,7 @@
       <!-- Timeline Section -->
       <div class="invitation-card shadow-xl overflow-hidden mt-6">
         <div
-          class="flex items-start justify-between px-7 py-6"
+          class="flex flex-col sm:flex-row items-start sm:justify-between gap-3 px-4 sm:px-7 py-4 sm:py-6"
           style="
             background: linear-gradient(
               180deg,
@@ -318,13 +312,13 @@
             </div>
           </div>
           <div
-            class="font-mono text-xs bg-white border border-stone-400 rounded-full px-4 py-1.5 text-slate-900 font-bold tracking-wider"
+            class="font-mono text-[11px] sm:text-xs bg-white border border-stone-400 rounded-full px-3 sm:px-4 py-1.5 text-slate-900 font-bold tracking-wider"
           >
             ID E-TH-2022-2026
           </div>
         </div>
 
-        <div class="p-5">
+        <div class="p-4 sm:p-5">
           <!-- Timeline Container -->
           <div class="timeline-wrapper">
             <!-- 2022 -->
@@ -509,7 +503,7 @@
       <!-- Form -->
       <div class="invitation-card shadow-xl overflow-hidden mt-6">
         <div
-          class="flex items-start justify-between px-7 py-6"
+          class="flex flex-col sm:flex-row items-start sm:justify-between gap-3 px-4 sm:px-7 py-4 sm:py-6"
           style="
             background: linear-gradient(
               180deg,
@@ -526,13 +520,13 @@
             <div class="text-sm text-slate-700 mt-1">{{ copy.formDesc }}</div>
           </div>
           <div
-            class="font-mono text-xs bg-white border border-stone-400 rounded-full px-4 py-1.5 text-slate-900 font-bold tracking-wider"
+            class="font-mono text-[11px] sm:text-xs bg-white border border-stone-400 rounded-full px-3 sm:px-4 py-1.5 text-slate-900 font-bold tracking-wider"
           >
             I-EV-2026
           </div>
         </div>
 
-        <div class="p-5">
+        <div class="p-4 sm:p-5">
           <div class="grid md:grid-cols-2 gap-4">
             <div>
               <label
@@ -589,10 +583,8 @@
             </div>
           </div>
 
-          <div
-            class="mt-5 bg-gradient-to-br from-stone-50 to-amber-50 border border-dashed border-stone-400 rounded-2xl p-5 relative"
-          >
-            <div class="flex items-center justify-between mb-3">
+          <div class="mt-5 bg-gradient-to-br from-stone-50 to-amber-50 border border-dashed border-stone-400 rounded-2xl p-4 sm:p-5 relative">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
               <b class="font-mono text-slate-900 text-sm font-extrabold">{{
                 copy.permitTitle
               }}</b>
@@ -605,7 +597,7 @@
             }}</pre>
             <div
               :class="[
-                'absolute right-4 top-14 px-3 py-2 rounded-xl font-mono text-xs border',
+                'mt-3 sm:mt-0 inline-block static sm:absolute sm:right-4 sm:top-14 px-3 py-2 rounded-xl font-mono text-xs border',
                 stampVisualClass,
               ]"
             >
@@ -614,13 +606,13 @@
           </div>
 
           <div class="mt-5 flex flex-wrap gap-3">
-            <button @click="issue" class="btn-primary">
+            <button @click="issue" class="btn-primary w-full sm:w-auto">
               🛂 {{ copy.issueBtn }}
             </button>
           </div>
         </div>
       </div>
-      <footer class="mt-8 text-center text-sm text-slate-600 font-medium">
+      <footer class="mt-8 text-center text-xs sm:text-sm text-slate-600 font-medium">
         {{ copy.foot }}
         <br />
         {{ copy.foot2 }}
@@ -1150,6 +1142,10 @@ watch([firstName, lastName, attendance, lang], () => {});
     max-width: 92%;
   }
 
+  .photo-img {
+    height: 190px;
+  }
+
   .stamp-item {
     width: 110px;
     height: 110px;
@@ -1357,11 +1353,17 @@ watch([firstName, lastName, attendance, lang], () => {});
     padding: 1rem;
   }
 
+  .timeline-card:hover {
+    transform: none;
+  }
+
   .timeline-stamp {
+    position: static;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    transform: none;
     font-size: 0.6rem;
     padding: 0.25rem 0.5rem;
-    top: 8px;
-    right: 8px;
   }
 
   .timeline-photos-grid {
@@ -1379,6 +1381,28 @@ watch([firstName, lastName, attendance, lang], () => {});
 
   .timeline-note {
     font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .timeline-badge {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto;
+    font-size: 0.82rem;
+  }
+
+  .timeline-item .timeline-badge::after {
+    display: none;
+  }
+
+  .timeline-photo {
+    height: 132px;
   }
 }
 </style>
