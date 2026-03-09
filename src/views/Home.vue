@@ -833,7 +833,6 @@ const COPY = {
     nameLabel: "First name",
     lastLabel: "Last name",
     attLabel: "Entry declaration (attendance)",
-    attHint: "Border translation: select the checkpoint(s) you plan to enter.",
     issueBtn: "🛂 Issue entry permit",
     waBtn: "✅ Confirm via WhatsApp",
     denyBtn: "🚫 Deny entry",
