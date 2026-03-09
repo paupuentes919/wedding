@@ -709,7 +709,7 @@ const COPY = {
     faqTitle: "FAQ",
     f1: "<b>¿Cómo debo ir vestido?</b> - Elegante",
     f2: "<b>¿Cuál es la duración del evento?</b> - El evento durarará aproximadamente 8 horas",
-    f3: "<b>¿El Yacht Club incluye estacionamiento?</b> - No, no hay estacionamiento en el Yacht Club, pero el más cercano está en Victoria Ocampo 355",
+    f3: "<b>¿El Yacht Club incluye estacionamiento?</b> - No, no hay estacionamiento, pero el más cercano está en Victoria Ocampo 355",
     giftTitle: "Contribucion simbolica",
     giftP1:
       "De acuerdo con la normativa vigente, su presencia ha sido previamente clasificada como aporte suficiente y de alto valor afectivo",
