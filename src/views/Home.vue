@@ -163,44 +163,44 @@
                 {{ copy.coupleTitle }}
               </h3>
               <div class="flex gap-4 sm:gap-6 flex-wrap">
-                <div class="flex-1 min-w-[160px] flex items-start gap-3">
+                <div class="flex-1 min-w-[140px] sm:min-w-[160px] flex items-start gap-3">
                   <img
                     :src="paulaform"
                     alt="Paula"
-                    class="w-16 h-20 sm:w-20 sm:h-24 object-cover rounded-lg border border-stone-400 flex-shrink-0"
+                    class="w-14 h-20 sm:w-20 sm:h-28 md:w-24 md:h-32 object-cover rounded-lg border border-stone-400 flex-shrink-0"
                   />
-                  <div>
+                  <div class="flex-1">
                     <label
-                      class="text-xs text-slate-600 font-bold uppercase tracking-wide"
+                      class="text-xs sm:text-sm text-slate-600 font-bold uppercase tracking-wide"
                       >{{ copy.brideLabel }}</label
                     >
                     <div
-                      class="font-bold text-slate-900 text-base sm:text-lg mt-1 font-playfair"
+                      class="font-bold text-slate-900 text-base sm:text-lg md:text-xl mt-1 font-playfair"
                     >
                       Paula Puentes
                     </div>
-                    <div class="text-xs text-slate-600 mt-1">
+                    <div class="text-xs sm:text-sm text-slate-600 mt-1">
                       {{ copy.brideNat }}
                     </div>
                   </div>
                 </div>
-                <div class="flex-1 min-w-[160px] flex items-start gap-3">
+                <div class="flex-1 min-w-[140px] sm:min-w-[160px] flex items-start gap-3">
                   <img
                     :src="dakotaform"
                     alt="Dakota"
-                    class="w-16 h-20 sm:w-20 sm:h-24 object-cover rounded-lg border border-stone-400 flex-shrink-0"
+                    class="w-14 h-20 sm:w-20 sm:h-28 md:w-24 md:h-32 object-cover rounded-lg border border-stone-400 flex-shrink-0"
                   />
-                  <div>
+                  <div class="flex-1">
                     <label
-                      class="text-xs text-slate-600 font-bold uppercase tracking-wide"
+                      class="text-xs sm:text-sm text-slate-600 font-bold uppercase tracking-wide"
                       >{{ copy.groomLabel }}</label
                     >
                     <div
-                      class="font-bold text-slate-900 text-base sm:text-lg mt-1 font-playfair"
+                      class="font-bold text-slate-900 text-base sm:text-lg md:text-xl mt-1 font-playfair"
                     >
                       Dakota Wendel
                     </div>
-                    <div class="text-xs text-slate-600 mt-1">
+                    <div class="text-xs sm:text-sm text-slate-600 mt-1">
                       {{ copy.groomNat }}
                     </div>
                   </div>
@@ -1099,13 +1099,13 @@ watch([firstName, lastName, attendance, lang], () => {});
 <style scoped>
 .photo-wrapper {
   width: 100%;
-  max-width: 36rem;
+  max-width: clamp(280px, 90vw, 28rem);
   margin: 0 auto;
 }
 
 .photo-box {
   position: relative;
-  padding: 1rem;
+  padding: clamp(0.75rem, 2vw, 1.25rem);
   background: linear-gradient(
     180deg,
     rgba(203, 169, 125, 0.9),
@@ -1118,10 +1118,11 @@ watch([firstName, lastName, attendance, lang], () => {});
 .photo-img {
   display: block;
   width: 100%;
-  height: 220px;
+  height: clamp(160px, 40vw, 260px);
+  aspect-ratio: 4/5;
   object-fit: cover;
   border-radius: 0.5rem;
-  border: 6px solid #f7ead6;
+  border: clamp(4px, 1.2vw, 7px) solid #f7ead6;
   box-shadow: 0 6px 18px rgba(45, 52, 70, 0.08);
   background: #fff;
 }
@@ -1129,10 +1130,11 @@ watch([firstName, lastName, attendance, lang], () => {});
 /* Paperclip */
 .paperclip-svg {
   position: absolute;
-  top: 6px;
-  left: 12px;
-  width: 70px;
-  height: 85px;
+  top: clamp(2px, 1.5vw, 10px);
+  left: clamp(6px, 1.5vw, 16px);
+  width: clamp(50px, 8vw, 80px);
+  height: auto;
+  aspect-ratio: 70/85;
   transform: rotate(-15deg);
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.15));
   opacity: 0.95;
@@ -1142,9 +1144,9 @@ watch([firstName, lastName, attendance, lang], () => {});
 /* Stamp Image */
 .stamp-image {
   position: absolute;
-  bottom: 10px;
-  right: 20px;
-  width: 120px;
+  bottom: clamp(-5px, 2vw, 15px);
+  right: clamp(5px, 2vw, 25px);
+  width: clamp(80px, 15vw, 140px);
   height: auto;
   transform: rotate(-15deg);
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
@@ -1166,20 +1168,20 @@ watch([firstName, lastName, attendance, lang], () => {});
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 140px;
-  height: 140px;
+  width: clamp(100px, 20vw, 160px);
+  height: clamp(100px, 20vw, 160px);
   filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.2));
 }
 
 .stamp-love {
-  right: 80px;
-  bottom: 30px;
+  right: clamp(40px, 8vw, 100px);
+  bottom: clamp(15px, 5vw, 50px);
   transform: rotate(-20deg);
 }
 
 .stamp-authenticated {
-  right: -10px;
-  bottom: 0;
+  right: clamp(-20px, 3vw, 20px);
+  bottom: clamp(-20px, 3vw, 10px);
   transform: rotate(15deg);
 }
 
@@ -1206,8 +1208,8 @@ watch([firstName, lastName, attendance, lang], () => {});
 .stamp-text-main {
   font-family: "Georgia", "Times New Roman", serif;
   font-weight: 900;
-  font-size: 14px;
-  letter-spacing: 1.2px;
+  font-size: clamp(10px, 2vw, 16px);
+  letter-spacing: clamp(0.8px, 0.15vw, 1.3px);
   text-transform: uppercase;
   text-shadow:
     0 2px 3px rgba(255, 255, 255, 0.7),
@@ -1219,8 +1221,8 @@ watch([firstName, lastName, attendance, lang], () => {});
 .stamp-bold-text {
   font-family: "Georgia", "Times New Roman", serif;
   font-weight: 900;
-  font-size: 16px;
-  letter-spacing: 1.5px;
+  font-size: clamp(12px, 2.2vw, 18px);
+  letter-spacing: clamp(1px, 0.15vw, 1.6px);
   text-transform: uppercase;
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
 }
@@ -1228,64 +1230,65 @@ watch([firstName, lastName, attendance, lang], () => {});
 .stamp-small-text {
   font-family: "Georgia", "Times New Roman", serif;
   font-weight: 700;
-  font-size: 8px;
-  letter-spacing: 1px;
+  font-size: clamp(6px, 1.2vw, 10px);
+  letter-spacing: clamp(0.6px, 0.12vw, 1.2px);
   text-transform: uppercase;
-  margin-top: 2px;
+  margin-top: clamp(1px, 0.5vw, 3px);
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .photo-wrapper {
-    max-width: 92%;
+    max-width: 95vw;
   }
 
   .photo-img {
-    height: 190px;
+    height: clamp(140px, 35vw, 280px);
+    border-width: clamp(3px, 1vw, 6px);
   }
 
   .stamp-item {
-    width: 110px;
-    height: 110px;
+    width: clamp(85px, 18vw, 130px);
+    height: clamp(85px, 18vw, 130px);
   }
 
   .stamp-love {
-    right: 60px;
-    bottom: 20px;
+    right: clamp(30px, 6vw, 70px);
+    bottom: clamp(10px, 4vw, 35px);
   }
 
   .stamp-authenticated {
-    right: -5px;
-    bottom: -5px;
+    right: clamp(-15px, 2vw, 10px);
+    bottom: clamp(-15px, 2vw, 5px);
   }
 
   .stamp-text-main {
-    font-size: 11px;
-    letter-spacing: 0.8px;
+    font-size: clamp(9px, 1.8vw, 13px);
+    letter-spacing: clamp(0.7px, 0.12vw, 1px);
   }
 
   .stamp-bold-text {
-    font-size: 13px;
-    letter-spacing: 1px;
+    font-size: clamp(11px, 2vw, 15px);
+    letter-spacing: clamp(0.8px, 0.12vw, 1.3px);
   }
 
   .stamp-small-text {
-    font-size: 7px;
-    margin-top: 1px;
+    font-size: clamp(5px, 1vw, 8px);
+    letter-spacing: clamp(0.5px, 0.1vw, 0.9px);
+    margin-top: clamp(0.5px, 0.3vw, 2px);
   }
 
   .paperclip-svg {
-    width: 56px;
-    height: 68px;
-    left: 8px;
-    top: 6px;
+    width: clamp(45px, 7vw, 70px);
+    left: clamp(4px, 1vw, 10px);
+    top: clamp(1px, 1vw, 6px);
   }
 
   .stamp-image {
-    width: 90px;
-    bottom: -10px;
-    right: -15px;
+    width: clamp(70px, 12vw, 110px);
+    bottom: clamp(-10px, 1.5vw, 5px);
+    right: clamp(-10px, 1.5vw, 10px);
   }
 }
 
@@ -1396,16 +1399,25 @@ watch([firstName, lastName, attendance, lang], () => {});
 
 .timeline-photos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 280px));
+  grid-template-columns: 1fr;
+  max-width: 270px;
+  margin: 0 auto;
   justify-content: center;
-  gap: 0.75rem;
+  gap: clamp(0.5rem, 1vw, 1rem);
   margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .timeline-photos-grid {
+    max-width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
 }
 
 .timeline-photo-box {
   width: 100%;
-  max-width: 280px;
-  padding: 0.4rem;
+  max-width: 100%;
+  padding: clamp(0.3rem, 0.8vw, 0.4rem);
   background: linear-gradient(145deg, #a8a29e, #d6d3d1);
   border-radius: 0.5rem;
   box-shadow: 0 4px 10px rgba(68, 64, 60, 0.12);
@@ -1414,10 +1426,10 @@ watch([firstName, lastName, attendance, lang], () => {});
 .timeline-photo {
   display: block;
   width: 100%;
-  height: 180px;
+  aspect-ratio: 4/3;
   object-fit: cover;
   border-radius: 0.35rem;
-  border: 3px solid #fef3c7;
+  border: clamp(1.5px, 0.4vw, 3px) solid #fef3c7;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
   background: #fff;
 }
@@ -1434,76 +1446,98 @@ watch([firstName, lastName, attendance, lang], () => {});
 }
 
 /* Responsive Timeline */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .timeline-item {
-    grid-template-columns: 60px 1fr;
-    gap: 1rem;
+    grid-template-columns: clamp(50px, 12vw, 70px) 1fr;
+    gap: clamp(0.75rem, 2vw, 1.25rem);
   }
 
   .timeline-badge {
-    width: 60px;
-    height: 60px;
-    font-size: 0.9rem;
+    width: clamp(50px, 12vw, 70px);
+    height: clamp(50px, 12vw, 70px);
+    font-size: clamp(0.75rem, 2vw, 1rem);
   }
 
   .timeline-item .timeline-badge::after {
-    height: 60px;
+    height: clamp(50px, 12vw, 70px);
   }
 
   .timeline-card {
-    padding: 1rem;
+    padding: clamp(0.75rem, 2vw, 1.25rem);
   }
 
   .timeline-card:hover {
-    transform: none;
+    transform: translateY(-2px);
   }
 
   .timeline-stamp {
     position: static;
     display: inline-block;
-    margin-bottom: 0.75rem;
+    margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
     transform: none;
-    font-size: 0.6rem;
-    padding: 0.25rem 0.5rem;
+    font-size: clamp(0.5rem, 1.2vw, 0.75rem);
+    padding: clamp(0.2rem, 0.5vw, 0.4rem) clamp(0.3rem, 0.7vw, 0.6rem);
   }
 
   .timeline-photos-grid {
     grid-template-columns: 1fr;
-    gap: 0.5rem;
+    gap: clamp(0.4rem, 1vw, 0.75rem);
   }
 
   .timeline-photo-box {
     max-width: 100%;
-  }
-
-  .timeline-photo {
-    height: 140px;
+    padding: clamp(0.25rem, 0.7vw, 0.4rem);
   }
 
   .timeline-note {
-    font-size: 0.8rem;
+    font-size: clamp(0.75rem, 1.8vw, 0.95rem);
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 640px) {
   .timeline-item {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
+    grid-template-columns: clamp(45px, 11vw, 60px) 1fr;
+    gap: clamp(0.6rem, 1.5vw, 1rem);
   }
 
   .timeline-badge {
-    width: 56px;
-    height: 56px;
+    width: clamp(45px, 11vw, 60px);
+    height: clamp(45px, 11vw, 60px);
+    font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+  }
+
+  .timeline-item .timeline-badge::after {
+    height: clamp(45px, 11vw, 60px);
+  }
+
+  .timeline-card {
+    padding: clamp(0.75rem, 1.5vw, 1rem);
+  }
+}
+
+@media (max-width: 500px) {
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: clamp(0.5rem, 1vw, 0.75rem);
+  }
+
+  .timeline-badge {
+    width: clamp(48px, 13vw, 56px);
+    height: clamp(48px, 13vw, 56px);
     margin: 0 auto;
-    font-size: 0.82rem;
+    font-size: clamp(0.7rem, 1.6vw, 0.85rem);
   }
 
   .timeline-item .timeline-badge::after {
     display: none;
   }
 
-  .timeline-photo {
-    height: 132px;
+  .timeline-photos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-note {
+    font-size: clamp(0.7rem, 1.6vw, 0.85rem);
   }
 }
 </style>
