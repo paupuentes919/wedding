@@ -574,7 +574,7 @@
           <div class="mt-4">
             <label
               class="text-xs text-slate-600 font-bold uppercase tracking-wide"
-              >{{ copy.attLabel }} <span class="text-red-600">*</span></label
+              ><span class="text-red-600">*</span> {{ copy.attLabel }}</label
             >
             <select v-model="attendance" class="mt-2 w-full input-elem">
               <option value="" disabled>{{ copy.attSelectOption }}</option>
