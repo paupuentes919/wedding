@@ -541,6 +541,11 @@
               <input
                 v-model="firstName"
                 class="mt-2 w-full input-elem outline-none"
+                :style="{
+                  border: incompleteFields.includes('nombre')
+                    ? '2px solid rgb(239, 68, 68)'
+                    : 'inherit',
+                }"
                 placeholder="Ej: Juan / John"
               />
             </div>
@@ -553,6 +558,11 @@
               <input
                 v-model="lastName"
                 class="mt-2 w-full input-elem outline-none"
+                :style="{
+                  border: incompleteFields.includes('apellido')
+                    ? '2px solid rgb(239, 68, 68)'
+                    : 'inherit',
+                }"
                 placeholder="Ej: Pérez / Smith"
               />
             </div>
@@ -576,7 +586,15 @@
               class="text-xs text-slate-600 font-bold uppercase tracking-wide"
               ><span class="text-red-600">*</span> {{ copy.attLabel }}</label
             >
-            <select v-model="attendance" class="mt-2 w-full input-elem">
+            <select
+              v-model="attendance"
+              class="mt-2 w-full input-elem"
+              :style="{
+                border: incompleteFields.includes('asistencia')
+                  ? '2px solid rgb(239, 68, 68)'
+                  : 'inherit',
+              }"
+            >
               <option value="" disabled>{{ copy.attSelectOption }}</option>
               <option value="yes">✅ {{ copy.attCeremony }}</option>
               <option value="no">❌ {{ copy.attNo }}</option>
@@ -585,7 +603,7 @@
               {{ copy.attHint }}
             </div>
             <div v-if="err" class="text-sm text-rose-600 mt-2 font-bold">
-              {{ copy.err }}
+              {{ errorMessage }}
             </div>
           </div>
 
@@ -841,6 +859,7 @@ const COPY = {
     nameLabel: "First name",
     lastLabel: "Last name",
     attLabel: "Attendance",
+    attHint: "Please confirm your attendance",
     issueBtn: "🛂 Issue entry permit",
     waBtn: "✅ Confirm via WhatsApp",
     denyBtn: "🚫 Deny entry",
@@ -893,6 +912,8 @@ const stampShown = ref(false);
 const toastMsg = ref("");
 const err = ref(false);
 const approved = ref(false);
+const incompleteFields = ref([]);
+const errorMessage = ref("");
 
 const copy = computed(() => COPY[lang.value]);
 const heroBg = computed(() => (lang.value === "es" ? argPhoto : usaPhoto));
@@ -946,11 +967,47 @@ function showToast(t) {
 }
 
 function validate() {
-  const ok =
-    firstName.value.trim().length > 1 &&
-    lastName.value.trim().length > 1 &&
-    ["yes", "no"].includes(attendance.value);
+  incompleteFields.value = [];
+  const fn = firstName.value.trim();
+  const ln = lastName.value.trim();
+  const att = attendance.value;
+
+  if (fn.length < 2) {
+    incompleteFields.value.push("nombre");
+  }
+  if (ln.length < 2) {
+    incompleteFields.value.push("apellido");
+  }
+  if (!["yes", "no"].includes(att)) {
+    incompleteFields.value.push("asistencia");
+  }
+
+  const ok = incompleteFields.value.length === 0;
   err.value = !ok;
+
+  // Generar mensaje de error dinámico
+  if (!ok) {
+    if (lang.value === "es") {
+      const campos = incompleteFields.value
+        .map((field) => {
+          if (field === "nombre") return "nombre";
+          if (field === "apellido") return "apellido";
+          if (field === "asistencia") return "selecciona si asistís o no";
+        })
+        .join(" y ");
+      errorMessage.value = `Completa ${campos}.`;
+    } else {
+      const campos = incompleteFields.value
+        .map((field) => {
+          if (field === "nombre") return "first name";
+          if (field === "apellido") return "last name";
+          if (field === "asistencia") return "select your attendance";
+        })
+        .join(" and ");
+      errorMessage.value = `Complete ${campos}.`;
+    }
+  }
+
   return ok;
 }
 
