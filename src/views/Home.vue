@@ -588,6 +588,48 @@
           </div>
 
           <div
+            v-if="attendance === 'yes'"
+            class="mt-4 bg-white/60 border border-stone-300 rounded-2xl p-4 sm:p-5"
+          >
+            <label
+              class="text-xs text-slate-600 font-bold uppercase tracking-wide"
+              >{{ copy.restrictionsTitle }}</label
+            >
+
+            <div class="mt-3 grid sm:grid-cols-2 gap-3 text-sm text-slate-700">
+              <label class="inline-flex items-center gap-2">
+                <input v-model="isVegetarian" type="checkbox" />
+                <span>{{ copy.restrictionVegetarian }}</span>
+              </label>
+
+              <label class="inline-flex items-center gap-2">
+                <input v-model="isVegan" type="checkbox" />
+                <span>{{ copy.restrictionVegan }}</span>
+              </label>
+
+              <label class="inline-flex items-center gap-2">
+                <input v-model="isCeliac" type="checkbox" />
+                <span>{{ copy.restrictionCeliac }}</span>
+              </label>
+            </div>
+
+            <div class="mt-3">
+              <label
+                class="text-xs text-slate-600 font-bold uppercase tracking-wide"
+                >{{ copy.restrictionAllergyLabel }}</label
+              >
+              <input
+                v-model="allergiesDetail"
+                class="mt-2 w-full input-elem outline-none"
+                :placeholder="copy.restrictionAllergyPlaceholder"
+              />
+              <div class="text-xs text-slate-500 mt-2 italic">
+                {{ copy.restrictionAllergyHint }}
+              </div>
+            </div>
+          </div>
+
+          <div
             class="mt-5 bg-gradient-to-br from-stone-50 to-amber-50 border border-dashed border-stone-400 rounded-2xl p-4 sm:p-5 relative"
           >
             <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
@@ -701,10 +743,17 @@ const COPY = {
     stop1Badge: "Puesto — Ceremonia",
     itHint: "Su compañía será debidamente celebrada",
     formTitle: "Datos de ingreso — Participante",
-    formDesc: "Complete los datos requeridos para validar su entrada al evento",
+    formDesc:
+      "Complete los datos requeridos para validar su asistencia o inasistencia al evento",
     attSelectOption: "Selecciona una opción",
     attCeremony: "Asisto a la ceremonia",
     attNo: "No puedo asistir (apoyo moral a distancia)",
+    restrictionsTitle: "Restricciones",
+    restrictionVegetarian: "Vegetariano",
+    restrictionVegan: "Vegano",
+    restrictionCeliac: "Celíaco",
+    restrictionAllergyLabel: "Alergias",
+    restrictionAllergyPlaceholder: "Contanos cuáles son tus alergias",
     issueBtn: "🛂 Emitir permiso de entrada",
     waBtn: "✅ Confirmar por WhatsApp",
     permitTitle: "VERIFICACIÓN DE DATOS COMPLETADOS",
@@ -771,10 +820,16 @@ const COPY = {
     itHint: "Your presence will be duly celebrated",
     formTitle: "Entry data — Participant",
     formDesc:
-      "Complete the required details to validate your entry to the event",
+      "Complete the required details to validate your attendance or non-attendance to the event",
     attSelectOption: "Select an option",
     attCeremony: "I attend the ceremony",
     attNo: "I can't attend (moral support from afar)",
+    restrictionsTitle: "Restrictions",
+    restrictionVegetarian: "Vegetarian",
+    restrictionVegan: "Vegan",
+    restrictionCeliac: "Celiac",
+    restrictionAllergyLabel: "Allergies",
+    restrictionAllergyPlaceholder: "Tell us your allergies",
     nameLabel: "First name",
     lastLabel: "Last name",
     attLabel: "Entry declaration (attendance)",
@@ -823,6 +878,10 @@ const firstName = ref("");
 const lastName = ref("");
 const email = ref("");
 const attendance = ref("");
+const isVegetarian = ref(false);
+const isVegan = ref(false);
+const isCeliac = ref(false);
+const allergiesDetail = ref("");
 const stampShown = ref(false);
 const toastMsg = ref("");
 const err = ref(false);
@@ -904,6 +963,10 @@ async function issue() {
   const guestLastName = lastName.value;
   const guestEmail = email.value;
   const guestAttendance = attendance.value;
+  const guestIsVegetarian = isVegetarian.value;
+  const guestIsVegan = isVegan.value;
+  const guestIsCeliac = isCeliac.value;
+  const guestAllergiesDetail = allergiesDetail.value;
 
   // Guardar en Supabase y enviar email en segundo plano (sin bloquear)
   (async () => {
@@ -913,6 +976,10 @@ async function issue() {
       guestLastName,
       guestEmail,
       guestAttendance,
+      guestIsVegetarian,
+      guestIsVegan,
+      guestIsCeliac,
+      guestAllergiesDetail,
     );
 
     if (!result.success) {
@@ -970,6 +1037,10 @@ async function issue() {
     lastName.value = "";
     email.value = "";
     attendance.value = "";
+    isVegetarian.value = false;
+    isVegan.value = false;
+    isCeliac.value = false;
+    allergiesDetail.value = "";
     stampShown.value = false;
     // NO resetear approved.value - mantener "Entrada autorizada"
   }, 2000);
@@ -1016,6 +1087,15 @@ const statusPill = computed(() => {
   }
 
   return `<span class="${dotClass}"></span><b class="${textClass}" style="margin-left:.5rem">${copy.value.topStatusPending}${text}</b>`;
+});
+
+watch(attendance, (value) => {
+  if (value !== "yes") {
+    isVegetarian.value = false;
+    isVegan.value = false;
+    isCeliac.value = false;
+    allergiesDetail.value = "";
+  }
 });
 
 watch([firstName, lastName, attendance, lang], () => {});
