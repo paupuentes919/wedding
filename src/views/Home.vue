@@ -163,7 +163,9 @@
                 {{ copy.coupleTitle }}
               </h3>
               <div class="flex gap-4 sm:gap-6 flex-wrap">
-                <div class="flex-1 min-w-[140px] sm:min-w-[160px] flex items-start gap-3">
+                <div
+                  class="flex-1 min-w-[140px] sm:min-w-[160px] flex items-start gap-3"
+                >
                   <img
                     :src="paulaform"
                     alt="Paula"
@@ -184,7 +186,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="flex-1 min-w-[140px] sm:min-w-[160px] flex items-start gap-3">
+                <div
+                  class="flex-1 min-w-[140px] sm:min-w-[160px] flex items-start gap-3"
+                >
                   <img
                     :src="dakotaform"
                     alt="Dakota"
@@ -719,11 +723,11 @@ const COPY = {
     f1: "<b>¿Cómo debo ir vestido?</b> - Elegante",
     f2: "<b>¿Cuál es la duración del evento?</b> - El evento durarará aproximadamente 8 horas",
     f3: "<b>¿El Yacht Club incluye estacionamiento?</b> - No, no hay estacionamiento, pero el más cercano está en Victoria Ocampo 355",
-    giftTitle: "Contribucion simbolica",
+    giftTitle: "Contribucion bancaria",
     giftP1:
       "De acuerdo con la normativa vigente, su presencia ha sido previamente clasificada como aporte suficiente y de alto valor afectivo",
     giftP2:
-      "No obstante, conforme al Codigo de Contribuciones Simbolicas,se autoriza el ingreso con obsequio voluntario para quienes asi lo dispongan",
+      "No obstante, conforme al Codigo de Contribuciones, se autoriza el ingreso con obsequio voluntario para quienes asi lo dispongan",
     giftCbu: "CBU: 00701583-30004038295770",
     giftHolder: "Titular: Paula Puentes",
     giftAlias: "Alias: pau.dakota.boda",
