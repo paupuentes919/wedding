@@ -535,7 +535,8 @@
             <div>
               <label
                 class="text-xs text-slate-600 font-bold uppercase tracking-wide"
-                >{{ copy.nameLabel }}</label
+                ><span class="text-rose-600">*</span>
+                {{ copy.nameLabel }}</label
               >
               <input
                 v-model="firstName"
@@ -546,7 +547,8 @@
             <div>
               <label
                 class="text-xs text-slate-600 font-bold uppercase tracking-wide"
-                >{{ copy.lastLabel }}</label
+                ><span class="text-rose-600">*</span>
+                {{ copy.lastLabel }}</label
               >
               <input
                 v-model="lastName"
@@ -559,7 +561,7 @@
           <div class="mt-4">
             <label
               class="text-xs text-slate-600 font-bold uppercase tracking-wide"
-              >Email</label
+              >{{ copy.emailLabel }}</label
             >
             <input
               v-model="email"
@@ -748,6 +750,9 @@ const COPY = {
     attSelectOption: "Selecciona una opción",
     attCeremony: "Asisto a la ceremonia",
     attNo: "No puedo asistir (apoyo moral a distancia)",
+    emailLabel: "Email (opcional, pero recomendado)",
+    nameLabel: "Nombre",
+    lastLabel: "Apellido",
     restrictionsTitle: "Restricciones",
     restrictionVegetarian: "Vegetariano",
     restrictionVegan: "Vegano",
@@ -758,7 +763,7 @@ const COPY = {
     waBtn: "✅ Confirmar por WhatsApp",
     permitTitle: "VERIFICACIÓN DE DATOS COMPLETADOS",
     lastText:
-      "Si completaste que vas a asistir, te llegará un email de confirmación a la casilla proporcionada",
+      "Si completaste que vas a asistir y dejaste tu email, te llegará un correo de confirmación a la casilla proporcionada",
     stamp: "APROBADO ✅\nENTRADA AUTORIZADA\nSIN REEMBOLSO",
     err: "Complete nombre y apellido para emitir el permiso.",
     faqTitle: "FAQ",
@@ -824,6 +829,7 @@ const COPY = {
     attSelectOption: "Select an option",
     attCeremony: "I attend the ceremony",
     attNo: "I can't attend (moral support from afar)",
+    emailLabel: "Email (optional, but recommended)",
     restrictionsTitle: "Restrictions",
     restrictionVegetarian: "Vegetarian",
     restrictionVegan: "Vegan",
@@ -839,7 +845,7 @@ const COPY = {
     formHint: "Smart humor promise: “Deny entry” doesn’t work.",
     permitTitle: "VERIFICATION OF COMPLETED DATA",
     lastText:
-      "If you completed that you will attend, you will receive a confirmation email at the provided address",
+      "If you completed that you will attend and left your email, you will receive a confirmation email at the provided address",
     stamp: "APPROVED ✅\nENTRY AUTHORIZED\nNO REFUNDS",
     err: "Please enter first and last name to issue the permit.",
     sideTitle: "Border rules (chill)",
