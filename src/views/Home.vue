@@ -703,7 +703,7 @@ const COPY = {
     attNo: "No puedo asistir (apoyo moral a distancia)",
     issueBtn: "🛂 Emitir permiso de entrada",
     waBtn: "✅ Confirmar por WhatsApp",
-    permitTitle: "PERMISO DE ENTRADA — CEREMONIA",
+    permitTitle: "VERIFICACIÓN DE DATOS COMPLETADOS",
     stamp: "APROBADO ✅\nENTRADA AUTORIZADA\nSIN REEMBOLSO",
     err: "Complete nombre y apellido para emitir el permiso.",
     faqTitle: "FAQ",
@@ -777,7 +777,7 @@ const COPY = {
     waBtn: "✅ Confirm via WhatsApp",
     denyBtn: "🚫 Deny entry",
     formHint: "Smart humor promise: “Deny entry” doesn’t work.",
-    permitTitle: "ENTRY PERMIT — CEREMONY",
+    permitTitle: "VERIFICATION OF COMPLETED DATA",
     stamp: "APPROVED ✅\nENTRY AUTHORIZED\nNO REFUNDS",
     err: "Please enter first and last name to issue the permit.",
     sideTitle: "Border rules (chill)",
@@ -907,11 +907,7 @@ async function issue() {
   // Enviar confirmaciones opcionales
   // 1) EmailJS sólo si el usuario dejó email
   let sentEmail = false;
-  if (
-    attendance.value !== "no" &&
-    email.value &&
-    email.value.includes("@")
-  ) {
+  if (attendance.value !== "no" && email.value && email.value.includes("@")) {
     const templateParams = {
       to_email: email.value,
       to_name: firstName.value,
