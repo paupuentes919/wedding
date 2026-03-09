@@ -765,7 +765,7 @@ const COPY = {
     lastText:
       "Si completaste que vas a asistir y dejaste tu email, te llegará un correo de confirmación a la casilla proporcionada",
     stamp: "APROBADO ✅\nENTRADA AUTORIZADA\nSIN REEMBOLSO",
-    err: "Complete nombre y apellido para emitir el permiso.",
+    err: "Completá nombre, apellido y seleccioná si asistís o no.",
     faqTitle: "FAQ",
     f1: "<b>¿Cómo debo ir vestido?</b> - Elegante",
     f2: "<b>¿Cuál es la duración del evento?</b> - El evento durarará aproximadamente 8 horas",
@@ -847,7 +847,7 @@ const COPY = {
     lastText:
       "If you completed that you will attend and left your email, you will receive a confirmation email at the provided address",
     stamp: "APPROVED ✅\nENTRY AUTHORIZED\nNO REFUNDS",
-    err: "Please enter first and last name to issue the permit.",
+    err: "Please enter first name, last name, and select attendance.",
     sideTitle: "Border rules (chill)",
     r1: "<b>Valid document:</b> a smile + celebration mode.",
     r2: "<b>Official language:</b> Spanglish, with Argentinian accent.",
@@ -945,7 +945,9 @@ function showToast(t) {
 
 function validate() {
   const ok =
-    firstName.value.trim().length > 1 && lastName.value.trim().length > 1;
+    firstName.value.trim().length > 1 &&
+    lastName.value.trim().length > 1 &&
+    ["yes", "no"].includes(attendance.value);
   err.value = !ok;
   return ok;
 }
