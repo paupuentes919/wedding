@@ -335,13 +335,6 @@
                 <div class="timeline-photos-grid">
                   <div class="timeline-photo-box">
                     <img
-                      src="/src/assets/timeline/2022-1.jpg"
-                      alt="2022 - 1"
-                      class="timeline-photo"
-                    />
-                  </div>
-                  <div class="timeline-photo-box">
-                    <img
                       src="/src/assets/timeline/2022-3.jpg"
                       alt="2022 - 3"
                       class="timeline-photo"
@@ -367,18 +360,10 @@
                       class="timeline-photo"
                     />
                   </div>
-                  <div class="timeline-photo-box">
-                    <img
-                      src="/src/assets/timeline/2023-2.jpg"
-                      alt="2023 - 2"
-                      class="timeline-photo"
-                    />
-                  </div>
                 </div>
                 <div class="timeline-note">{{ copy.timeline2023Text }}</div>
               </div>
             </div>
-
             <!-- 2024 -->
             <div class="timeline-item">
               <div class="timeline-badge">2024</div>
@@ -387,13 +372,6 @@
                   📌 {{ copy.timeline2024Title }}
                 </div>
                 <div class="timeline-photos-grid">
-                  <div class="timeline-photo-box">
-                    <img
-                      src="/src/assets/timeline/2024-1.jpg"
-                      alt="2024 - 1"
-                      class="timeline-photo"
-                    />
-                  </div>
                   <div class="timeline-photo-box">
                     <img
                       src="/src/assets/timeline/2024-3.jpg"
@@ -421,13 +399,6 @@
                       class="timeline-photo"
                     />
                   </div>
-                  <div class="timeline-photo-box">
-                    <img
-                      src="/src/assets/timeline/2025-2.jpg"
-                      alt="2025 - 2"
-                      class="timeline-photo"
-                    />
-                  </div>
                 </div>
                 <div class="timeline-note">{{ copy.timeline2025Text }}</div>
               </div>
@@ -445,13 +416,6 @@
                     <img
                       src="/src/assets/timeline/2026-1.jpg"
                       alt="2026 - 1"
-                      class="timeline-photo"
-                    />
-                  </div>
-                  <div class="timeline-photo-box">
-                    <img
-                      src="/src/assets/timeline/2026-3.jpg"
-                      alt="2026 - 3"
                       class="timeline-photo"
                     />
                   </div>
